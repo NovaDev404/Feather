@@ -134,8 +134,13 @@ struct InstallPreviewView: View {
 			)
 			return
 		}
-				
+
 		Task.detached {
+			// Check NovaDNS Dynamic toggle before install starts
+			let useNovaDNSDynamic = UserDefaults.standard.bool(forKey: "Feather.useNovaDNSDynamic")
+			if useNovaDNSDynamic {
+				// Run Start Code here
+			}
 			do {
 				let handler = await ArchiveHandler(app: app, viewModel: viewModel)
 				try await handler.move()
@@ -179,9 +184,16 @@ struct InstallPreviewView: View {
 						}
 					}
 				}
+				// Check NovaDNS Dynamic toggle after install completes (success)
+				if useNovaDNSDynamic {
+					// Run Success Code here
+				}
 			} catch {
 				await progressTask?.cancel()
-				
+				// Check NovaDNS Dynamic toggle after install fails (failure)
+				if useNovaDNSDynamic {
+					// Run Failure Code here
+				}
 				await MainActor.run {
 					UIAlertController.showAlertWithOk(
 						title: .localized("Install"),

@@ -3,6 +3,7 @@
 //  Feather
 //
 //  Created by samara on 10.04.2025.
+//  Modified by NovaDev404 on 24.02.2026.
 //
 
 import SwiftUI
@@ -82,6 +83,9 @@ struct SettingsView: View {
                     }
                     NavigationLink(destination: InstallationView()) {
                         Label(.localized("Installation"), systemImage: "arrow.down.circle")
+                    }
+                    NavigationLink(destination: MoreView()) {
+                        Label(.localized("More"), systemImage: "ellipsis.circle")
                     }
                 } footer: {
                     Text(.localized("Configure the apps way of installing, its zip compression levels, and custom modifications to apps."))
