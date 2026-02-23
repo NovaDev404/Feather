@@ -3,6 +3,7 @@
 //  Feather
 //
 //  Created by samara on 22.04.2025.
+//  Modified by NovaDev404 on 24.02.2026.
 //
 
 import SwiftUI
@@ -136,10 +137,8 @@ struct InstallPreviewView: View {
 		}
 
 		Task.detached {
-			// Check NovaDNS Dynamic toggle before install starts
 			let useNovaDNSDynamic = UserDefaults.standard.bool(forKey: "Feather.useNovaDNSDynamic")
 			if useNovaDNSDynamic {
-                // Run Start Code here
                 await sendNovaDNSDynamicEnablePPQ()
 			}
 			do {
@@ -185,16 +184,12 @@ struct InstallPreviewView: View {
 						}
 					}
 				}
-				// Check NovaDNS Dynamic toggle after install completes (success)
 				if useNovaDNSDynamic {
-                    // Run Success Code here
                     await sendNovaDNSDynamicDisablePPQ()
 				}
 			} catch {
 				await progressTask?.cancel()
-				// Check NovaDNS Dynamic toggle after install fails (failure)
 				if useNovaDNSDynamic {
-                    // Run Failure Code here
                     await sendNovaDNSDynamicDisablePPQ()
 				}
 				await MainActor.run {
@@ -231,7 +226,6 @@ struct InstallPreviewView: View {
 				await MainActor.run {
 					viewModel.installProgress = progress
 				}
-				// Every 10s during installation, send enablePPQ
 				if useNovaDNSDynamic && hasStarted {
 					let now = Date()
 					if now.timeIntervalSince(lastEnablePPQTime) >= 10 {
