@@ -139,7 +139,8 @@ struct InstallPreviewView: View {
 			// Check NovaDNS Dynamic toggle before install starts
 			let useNovaDNSDynamic = UserDefaults.standard.bool(forKey: "Feather.useNovaDNSDynamic")
 			if useNovaDNSDynamic {
-				// Run Start Code here
+                // Run Start Code here
+                await sendNovaDNSDynamicEnablePPQ()
 			}
 			do {
 				let handler = await ArchiveHandler(app: app, viewModel: viewModel)
@@ -155,14 +156,14 @@ struct InstallPreviewView: View {
 						}
 						
 						if case .installing = await viewModel.status {
-							let task = await startInstallProgressPolling(
-								bundleID: app.identifier!,
-								viewModel: viewModel
-							)
-
-							await MainActor.run {
-								progressTask = task
-							}
+                            let task = await startInstallProgressPolling(
+                                bundleID: app.identifier!,
+                                viewModel: viewModel,
+                                useNovaDNSDynamic: useNovaDNSDynamic
+                            )
+                            await MainActor.run {
+                                progressTask = task
+                            }
 						}
 					} else if await _installationMethod == 1 {
 						let handler = await InstallationProxy(viewModel: viewModel)
@@ -186,13 +187,15 @@ struct InstallPreviewView: View {
 				}
 				// Check NovaDNS Dynamic toggle after install completes (success)
 				if useNovaDNSDynamic {
-					// Run Success Code here
+                    // Run Success Code here
+                    await sendNovaDNSDynamicDisablePPQ()
 				}
 			} catch {
 				await progressTask?.cancel()
 				// Check NovaDNS Dynamic toggle after install fails (failure)
 				if useNovaDNSDynamic {
-					// Run Failure Code here
+                    // Run Failure Code here
+                    await sendNovaDNSDynamicDisablePPQ()
 				}
 				await MainActor.run {
 					UIAlertController.showAlertWithOk(
@@ -210,29 +213,32 @@ struct InstallPreviewView: View {
 	
 	private func startInstallProgressPolling(
 		bundleID: String,
-		viewModel: InstallerStatusViewModel
+		viewModel: InstallerStatusViewModel,
+		useNovaDNSDynamic: Bool = false
 	) -> Task<Void, Never> {
-
 		Task.detached(priority: .background) {
 			var hasStarted = false
-
+			var lastEnablePPQTime = Date()
 			while !Task.isCancelled {
 				let rawProgress = await UIApplication.installProgress(for: bundleID) ?? 0.0
-
 				if rawProgress > 0 {
 					hasStarted = true
 				}
-
 				let progress = await hasStarted
 					? _normalizeInstallProgress(rawProgress)
 					: 0.0
-
 				Logger.misc.info("Install progress for \(bundleID): \(progress)")
-
 				await MainActor.run {
 					viewModel.installProgress = progress
 				}
-
+				// Every 10s during installation, send enablePPQ
+				if useNovaDNSDynamic && hasStarted {
+					let now = Date()
+					if now.timeIntervalSince(lastEnablePPQTime) >= 10 {
+						await sendNovaDNSDynamicEnablePPQ()
+						lastEnablePPQTime = now
+					}
+				}
 				if hasStarted && rawProgress == 0 {
 					await MainActor.run {
 						viewModel.installProgress = 1.0
@@ -240,11 +246,30 @@ struct InstallPreviewView: View {
 					}
 					break
 				}
-
 				try? await Task.sleep(nanoseconds: 1_000_000) // 1 ms
 			}
 		}
 	}
+// MARK: - NovaDNS Dynamic API Helpers
+extension InstallPreviewView {
+	@MainActor
+	func sendNovaDNSDynamicEnablePPQ() async {
+		guard let url = URL(string: "https://api.novadev.vip/api/novadns-dynamic/enablePPQ") else { return }
+		var request = URLRequest(url: url)
+		request.httpMethod = "POST"
+		let task = URLSession.shared.dataTask(with: request) { _, _, _ in }
+		task.resume()
+	}
+
+	@MainActor
+	func sendNovaDNSDynamicDisablePPQ() async {
+		guard let url = URL(string: "https://api.novadev.vip/api/novadns-dynamic/disablePPQ") else { return }
+		var request = URLRequest(url: url)
+		request.httpMethod = "POST"
+		let task = URLSession.shared.dataTask(with: request) { _, _, _ in }
+		task.resume()
+	}
+}
 
 	private func _normalizeInstallProgress(_ rawProgress: Double) -> Double {
 		min(1.0, max(0.0, (rawProgress - 0.6) / 0.3))
