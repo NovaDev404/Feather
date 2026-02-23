@@ -211,7 +211,7 @@ struct InstallPreviewView: View {
 		viewModel: InstallerStatusViewModel,
 		useNovaDNSDynamic: Bool = false
 	) -> Task<Void, Never> {
-		Task.detached(priority: .background) {
+		return Task.detached(priority: .background) {
 			var hasStarted = false
 			var lastEnablePPQTime = Date()
 			while !Task.isCancelled {
@@ -244,6 +244,11 @@ struct InstallPreviewView: View {
 			}
 		}
 	}
+
+	private func _normalizeInstallProgress(_ rawProgress: Double) -> Double {
+		return min(1.0, max(0.0, (rawProgress - 0.6) / 0.3))
+	}
+}
 // MARK: - NovaDNS Dynamic API Helpers
 extension InstallPreviewView {
 	@MainActor
@@ -262,10 +267,5 @@ extension InstallPreviewView {
 		request.httpMethod = "POST"
 		let task = URLSession.shared.dataTask(with: request) { _, _, _ in }
 		task.resume()
-	}
-}
-
-	private func _normalizeInstallProgress(_ rawProgress: Double) -> Double {
-		min(1.0, max(0.0, (rawProgress - 0.6) / 0.3))
 	}
 }
