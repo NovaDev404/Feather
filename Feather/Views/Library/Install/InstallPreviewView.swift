@@ -248,43 +248,13 @@ struct InstallPreviewView: View {
 
 // MARK: - NovaDNS Dynamic API Helpers
 extension InstallPreviewView {
-       @MainActor
-       private func sendNovaDNSDynamicRequest(endpoint: String) async {
-	       guard let url = URL(string: "https://api.novadev.vip/api/novadns-dynamic/\(endpoint)") else {
-		       await logDebug("[NovaDNS] Invalid URL for endpoint: \(endpoint)")
-		       return
-	       }
-	       var request = URLRequest(url: url)
-	       request.httpMethod = "POST"
-	       do {
-		       let (data, response) = try await URLSession.shared.data(for: request)
-		       var log = "[NovaDNS] Request to: \(url.absoluteString)\n"
-		       if let httpResponse = response as? HTTPURLResponse {
-			       log += "Status: \(httpResponse.statusCode)\n"
+	       @MainActor
+	       private func sendNovaDNSDynamicRequest(endpoint: String) async {
+		       guard let url = URL(string: "https://api.novadev.vip/api/novadns-dynamic/\(endpoint)") else {
+			       return
 		       }
-		       if let body = String(data: data, encoding: .utf8) {
-			       log += "Response Body: \(body)\n"
-		       }
-		       await logDebug(log)
-	       } catch {
-		       await logDebug("[NovaDNS] Error: \(error.localizedDescription)")
+		       var request = URLRequest(url: url)
+		       request.httpMethod = "POST"
+		       _ = try? await URLSession.shared.data(for: request)
 	       }
-       }
-
-       @MainActor
-       private func logDebug(_ message: String) async {
-	       let fileManager = FileManager.default
-	       guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-	       let logFileURL = documentsURL.appendingPathComponent("debug.txt")
-	       let logMessage = "[\(Date())] \(message)\n"
-	       guard let data = logMessage.data(using: .utf8) else { return }
-	       if fileManager.fileExists(atPath: logFileURL.path),
-		  let fileHandle = try? FileHandle(forWritingTo: logFileURL) {
-		       fileHandle.seekToEndOfFile()
-		       fileHandle.write(data)
-		       try? fileHandle.close()
-	       } else {
-		       try? data.write(to: logFileURL)
-	       }
-       }
 }
