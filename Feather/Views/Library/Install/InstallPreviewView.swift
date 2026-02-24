@@ -225,7 +225,7 @@ struct InstallPreviewView: View {
 				if useNovaDNSDynamic && hasStarted {
 					let now = Date()
 					if now.timeIntervalSince(lastEnablePPQTime) >= 10 {
-						await sendNovaDNSDynamicEnablePPQ()
+						await sendNovaDNSDynamicRequest(endpoint: "enablePPQ")
 						lastEnablePPQTime = now
 					}
 				}
