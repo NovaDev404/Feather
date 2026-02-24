@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - Class
+@MainActor
 public class NBFetchService {
 	
 	public enum NBFetchServiceError: Error, LocalizedError {
