@@ -135,9 +135,12 @@ struct InstallPreviewView: View {
 			       return
 		       }
 
-		       Task.detached {
+			   Task.detached {
 				   let useNovaDNSDynamic = UserDefaults.standard.bool(forKey: "Feather.useNovaDNSDynamic")
 				   if useNovaDNSDynamic {
+					   await MainActor.run {
+						   viewModel.status = InstallerStatusViewModel.enablingPPQStatus as! InstallerStatusViewModel.InstallerStatus
+					   }
 					   await NovaDNSDynamic.sendRequest(endpoint: "enablePPQ")
 					   try? await Task.sleep(nanoseconds: 10_000_000_000) // 10 seconds
 				   }
@@ -180,14 +183,10 @@ struct InstallPreviewView: View {
 						       }
 					       }
 				       }
-					   if useNovaDNSDynamic {
-						   await NovaDNSDynamic.sendRequest(endpoint: "disablePPQ")
-					   }
+
 			       } catch {
 				       await progressTask?.cancel()
-					   if useNovaDNSDynamic {
-						   await NovaDNSDynamic.sendRequest(endpoint: "disablePPQ")
-					   }
+
 				       await MainActor.run {
 					       UIAlertController.showAlertWithOk(
 						       title: .localized("Install"),
