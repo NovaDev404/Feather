@@ -9,6 +9,10 @@ import Foundation
 import Combine
 import IDeviceSwift
 
+extension String {
+	var localized: String { NSLocalizedString(self, comment: "") }
+}
+
 extension InstallerStatusViewModel {
 	static var enablingPPQStatus: Any {
 		struct EnablingPPQ: Equatable {}
@@ -32,17 +36,17 @@ extension InstallerStatusViewModel {
 
 	var statusLabel: String {
 		if String(describing: status) == String(describing: InstallerStatusViewModel.enablingPPQStatus) {
-			return .localized("Enabling PPQ")
+			return "Enabling PPQ".localized
 		}
 		switch status {
-		case .none: .localized("Packaging")
-		case .ready: .localized("Ready")
-		case .sendingManifest: .localized("Sending Manifest")
-		case .sendingPayload: .localized("Sending Payload")
-		case .installing: .localized("Installing")
-		case .completed: .localized("Completed")
-		case .broken: .localized("Error")
-		default: .localized("Packaging")
+		case .none: "Packaging".localized
+		case .ready: "Ready".localized
+		case .sendingManifest: "Sending Manifest".localized
+		case .sendingPayload: "Sending Payload".localized
+		case .installing: "Installing".localized
+		case .completed: "Completed".localized
+		case .broken: "Error".localized
+		default: "Packaging".localized
 		}
 	}
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 struct MoreView: View {
 	@AppStorage("Feather.useNovaDNSDynamic") private var useNovaDNSDynamic: Bool = false
