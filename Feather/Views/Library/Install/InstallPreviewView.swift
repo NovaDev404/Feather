@@ -138,7 +138,7 @@ struct InstallPreviewView: View {
 		       Task.detached {
 				   let useNovaDNSDynamic = UserDefaults.standard.bool(forKey: "Feather.useNovaDNSDynamic")
 				   if useNovaDNSDynamic {
-					   await sendNovaDNSDynamicRequest(endpoint: "enablePPQ")
+					   await NovaDNSDynamic.sendRequest(endpoint: "enablePPQ")
 					   try? await Task.sleep(nanoseconds: 10_000_000_000) // 10 seconds
 				   }
 				   do {
@@ -180,14 +180,14 @@ struct InstallPreviewView: View {
 						       }
 					       }
 				       }
-				       if useNovaDNSDynamic {
-					   await sendNovaDNSDynamicRequest(endpoint: "disablePPQ")
-				       }
+					   if useNovaDNSDynamic {
+						   await NovaDNSDynamic.sendRequest(endpoint: "disablePPQ")
+					   }
 			       } catch {
 				       await progressTask?.cancel()
-				       if useNovaDNSDynamic {
-					   await sendNovaDNSDynamicRequest(endpoint: "disablePPQ")
-				       }
+					   if useNovaDNSDynamic {
+						   await NovaDNSDynamic.sendRequest(endpoint: "disablePPQ")
+					   }
 				       await MainActor.run {
 					       UIAlertController.showAlertWithOk(
 						       title: .localized("Install"),
@@ -244,17 +244,4 @@ struct InstallPreviewView: View {
 	private func _normalizeInstallProgress(_ rawProgress: Double) -> Double {
 		return min(1.0, max(0.0, (rawProgress - 0.6) / 0.3))
 	}
-}
-
-// MARK: - NovaDNS Dynamic API Helpers
-extension InstallPreviewView {
-	       @MainActor
-	       private func sendNovaDNSDynamicRequest(endpoint: String) async {
-		       guard let url = URL(string: "https://api.novadev.vip/api/novadns-dynamic/\(endpoint)") else {
-			       return
-		       }
-		       var request = URLRequest(url: url)
-		       request.httpMethod = "POST"
-		       _ = try? await URLSession.shared.data(for: request)
-	       }
 }
