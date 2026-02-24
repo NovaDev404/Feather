@@ -190,19 +190,12 @@ struct InstallPreviewView: View {
 								}
 							)
 						}
-							message: String(describing: error),
-							action: {
-								HeartbeatManager.shared.start(true)
-								dismiss()
-							}
-						)
 					}
 				}
-			} // end Task.detached
-		} // end Task { @MainActor in }
-	} // end _install()
-
-	// --- FIXED: helper functions are declared at struct scope (not inside a local scope) ---
+			}
+		}
+	}
+	
 	private func startInstallProgressPolling(
 		bundleID: String,
 		viewModel: InstallerStatusViewModel,
