@@ -3,7 +3,6 @@
 //  Feather
 //
 //  Created by samara on 22.04.2025.
-//  Modified by NovaDev404 on 24.02.2026.
 //
 
 import SwiftUI
