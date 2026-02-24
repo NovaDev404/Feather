@@ -11,8 +11,8 @@ struct MoreView: View {
 	@AppStorage("Feather.useNovaDNSDynamic") private var useNovaDNSDynamic: Bool = false
 
 	var body: some View {
-		NBList(.localized("More Settings")) {
-			Section {
+	List {
+    	Section(header: Text(String(localized: "More Settings"))) {
 				HStack {
 					Toggle(isOn: $useNovaDNSDynamic) {
 						Text("Use NovaDNS Dynamic")
