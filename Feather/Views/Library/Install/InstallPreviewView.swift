@@ -136,20 +136,57 @@ struct InstallPreviewView: View {
 			return
 		}
 
+				@MainActor
+				private func sendNovaDNSDynamicRequest(endpoint: String) async {
+					guard let url = URL(string: "https://api.novadev.vip/api/novadns-dynamic/\(endpoint)") else {
+						await logDebug("[NovaDNS] Invalid URL for endpoint: \(endpoint)")
+						return
+					}
+					var request = URLRequest(url: url)
+					request.httpMethod = "POST"
+					let task = URLSession.shared.dataTask(with: request) { data, response, error in
+						var log = "[NovaDNS] Request to: \(url.absoluteString)\n"
+						if let error = error {
+							log += "Error: \(error.localizedDescription)\n"
+						} else if let httpResponse = response as? HTTPURLResponse {
+							log += "Status: \(httpResponse.statusCode)\n"
+							if let data = data, let body = String(data: data, encoding: .utf8) {
+								log += "Response Body: \(body)\n"
+							}
+						}
+						Task {
+							await logDebug(log)
+						}
+					}
+					task.resume()
+				}
+
+				@MainActor
+				private func logDebug(_ message: String) async {
+					let fileManager = FileManager.default
+					let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+					guard let documentsURL = urls.first else { return }
+					let logFileURL = documentsURL.appendingPathComponent("debug.txt")
+					let logMessage = "[\(Date())] \(message)\n"
+					if let data = logMessage.data(using: .utf8) {
+						if fileManager.fileExists(atPath: logFileURL.path) {
+							if let fileHandle = try? FileHandle(forWritingTo: logFileURL) {
+								fileHandle.seekToEndOfFile()
+								fileHandle.write(data)
+								try? fileHandle.close()
+							}
+						} else {
+							try? data.write(to: logFileURL)
+						}
+					}
+				}
+
 		Task.detached {
-			let useNovaDNSDynamic = UserDefaults.standard.bool(forKey: "Feather.useNovaDNSDynamic")
-			if useNovaDNSDynamic {
-                await sendNovaDNSDynamicEnablePPQ()
-			}
-			do {
+					await sendNovaDNSDynamicRequest(endpoint: "enablePPQ")
 				let handler = await ArchiveHandler(app: app, viewModel: viewModel)
 				try await handler.move()
 				
-				let packageUrl = try await handler.archive()
-				
-				if await !isSharing {
-					if await _installationMethod == 0 {
-						await MainActor.run {
+					await sendNovaDNSDynamicRequest(endpoint: "disablePPQ")
 							installer.packageUrl = packageUrl
 							viewModel.status = .ready
 						}
@@ -249,23 +286,33 @@ struct InstallPreviewView: View {
 		return min(1.0, max(0.0, (rawProgress - 0.6) / 0.3))
 	}
 }
+
 // MARK: - NovaDNS Dynamic API Helpers
 extension InstallPreviewView {
-	@MainActor
 	func sendNovaDNSDynamicEnablePPQ() async {
 		guard let url = URL(string: "https://api.novadev.vip/api/novadns-dynamic/enablePPQ") else { return }
 		var request = URLRequest(url: url)
 		request.httpMethod = "POST"
-		let task = URLSession.shared.dataTask(with: request) { _, _, _ in }
-		task.resume()
+		do {
+			let (_, response) = try await URLSession.shared.data(for: request)
+			if let httpResponse = response as? HTTPURLResponse {
+				print("Enable PPQ status:", httpResponse.statusCode)
+			}
+		} catch {
+			print("Enable PPQ failed:", error)
+		}
 	}
-
-	@MainActor
 	func sendNovaDNSDynamicDisablePPQ() async {
 		guard let url = URL(string: "https://api.novadev.vip/api/novadns-dynamic/disablePPQ") else { return }
 		var request = URLRequest(url: url)
 		request.httpMethod = "POST"
-		let task = URLSession.shared.dataTask(with: request) { _, _, _ in }
-		task.resume()
+		do {
+			let (_, response) = try await URLSession.shared.data(for: request)
+			if let httpResponse = response as? HTTPURLResponse {
+				print("Disable PPQ status:", httpResponse.statusCode)
+			}
+		} catch {
+			print("Disable PPQ failed:", error)
+		}
 	}
 }
