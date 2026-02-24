@@ -115,7 +115,9 @@ struct FeatherApp: App {
 				let queryItems = components.queryItems?.reduce(into: [String: String]()) { $0[$1.name.lowercased()] = $1.value } ?? [:]
 				guard let callbackTemplate = queryItems["callback_template"]?.removingPercentEncoding else { return }
 				
-				FR.exportCertificateAndOpenUrl(using: callbackTemplate)
+				Task {
+					await FR.exportCertificateAndOpenUrl(using: callbackTemplate)
+				}
 			}
 			/// feather://source/<url>
 			if let fullPath = url.validatedScheme(after: "/source/") {

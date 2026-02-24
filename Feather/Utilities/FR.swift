@@ -160,7 +160,7 @@ enum FR {
 	) {
 		guard let url = URL(string: urlString) else { return }
 		
-		NBFetchService().fetch<ASRepository>(from: url) { (result: Result<ASRepository, Error>) in
+		NBFetchService().fetch(from: url) { (result: Result<ASRepository, Error>) in
 			switch result {
 			case .success(let data):
 				let id = data.id ?? url.absoluteString
@@ -185,7 +185,7 @@ enum FR {
 	@MainActor
 	static func exportCertificateAndOpenUrl(using template: String) async {
 		// Helper that performs the export for a given certificate
-		func performExport(for certificate: CertificatePair) {
+		func performExport(for certificate: CertificatePair) async {
 			guard
 				let certificateKeyFile = Storage.shared.getFile(.certificate, from: certificate),
 				let certificateKeyFileData = try? Data(contentsOf: certificateKeyFile)
@@ -206,11 +206,9 @@ enum FR {
 				.replacingOccurrences(of: "$(BASE64_CERT)", with: encodedCert)
 				.replacingOccurrences(of: "$(PASSWORD)", with: certificate.password ?? "")
 			
-			guard let callbackUrl = URL(string: urlStr) else {
-				return
-			}
-			
-			   await UIApplication.shared.open(callbackUrl)
+			guard let callbackUrl = URL(string: urlStr) else { return }
+
+			await UIApplication.shared.open(callbackUrl)
 		}
 		
 		let certificates = Storage.shared.getAllCertificates()
@@ -230,7 +228,9 @@ enum FR {
 				}
 				
 				let selectAction = UIAlertAction(title: title, style: .default) { _ in
-					performExport(for: cert)
+					Task { @MainActor in
+						await performExport(for: cert)
+					}
 				}
 				selectionActions.append(selectAction)
 			}

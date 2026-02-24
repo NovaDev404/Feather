@@ -12,7 +12,7 @@ import NimbleJSON
 
 // MARK: - Class
 final class SourcesViewModel: ObservableObject {
-    static let shared = SourcesViewModel()
+    @MainActor static let shared = SourcesViewModel()
     
     typealias RepositoryDataHandler = Result<ASRepository, Error>
     
@@ -42,15 +42,15 @@ final class SourcesViewModel: ObservableObject {
             let endIndex = min(startIndex + batchSize, sourcesArray.count)
             let batch = sourcesArray[startIndex..<endIndex]
             
-            let batchResults = await MainActor.run {
-                await withTaskGroup(of: (AltSource, ASRepository?).self, returning: [AltSource: ASRepository].self) { group in
-                    for source in batch {
-                        group.addTask {
-                            guard let url = source.sourceURL else {
-                                return (source, nil)
-                            }
-                            
-                            return await withCheckedContinuation { continuation in
+            let batchResults = await withTaskGroup(of: (AltSource, ASRepository?).self, returning: [AltSource: ASRepository].self) { group in
+                for source in batch {
+                    group.addTask {
+                        guard let url = source.sourceURL else {
+                            return (source, nil)
+                        }
+
+                        return await withCheckedContinuation { continuation in
+                            Task { @MainActor in
                                 self._dataService.fetch(from: url) { (result: RepositoryDataHandler) in
                                     switch result {
                                     case .success(let repo):
@@ -62,17 +62,17 @@ final class SourcesViewModel: ObservableObject {
                             }
                         }
                     }
-                    
-                    var results = [AltSource: ASRepository]()
-                    for await (source, repo) in group {
-                        if let repo {
-                            results[source] = repo
-                        }
-                    }
-                    return results
                 }
+
+                var results = [AltSource: ASRepository]()
+                for await (source, repo) in group {
+                    if let repo {
+                        results[source] = repo
+                    }
+                }
+                return results
             }
-            
+
             await MainActor.run {
                 for (source, repo) in batchResults {
                     self.sources[source] = repo

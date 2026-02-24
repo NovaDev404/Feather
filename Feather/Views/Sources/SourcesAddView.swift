@@ -192,16 +192,16 @@ struct SourcesAddView: View {
 			for url in urls {
 				group.addTask {
 					await withCheckedContinuation { continuation in
-						   dataService.fetch(from: url) { (result: RepositoryDataHandler) in
-							switch result {
-							case .success(let repo):
-								Task { @MainActor in
+						Task { @MainActor in
+							dataService.fetch(from: url) { (result: RepositoryDataHandler) in
+								switch result {
+								case .success(let repo):
 									results.append((url: url, data: repo))
+								case .failure(let error):
+									Logger.misc.error("Failed to fetch \(url): \(error.localizedDescription)")
 								}
-							case .failure(let error):
-								Logger.misc.error("Failed to fetch \(url): \(error.localizedDescription)")
+								continuation.resume()
 							}
-							continuation.resume()
 						}
 					}
 				}
