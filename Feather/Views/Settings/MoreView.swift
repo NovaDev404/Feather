@@ -11,7 +11,7 @@ struct MoreView: View {
 	@AppStorage("Feather.useNovaDNSDynamic") private var useNovaDNSDynamic: Bool = false
 
 	var body: some View {
-		Form {
+		NBList(.localized("More Settings")) {
 			Section {
 				HStack {
 					Toggle(isOn: $useNovaDNSDynamic) {

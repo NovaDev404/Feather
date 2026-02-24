@@ -85,7 +85,7 @@ struct SettingsView: View {
                         Label(.localized("Installation"), systemImage: "arrow.down.circle")
                     }
                     NavigationLink(destination: MoreView()) {
-                        Label(.localized("More"), systemImage: "ellipsis.circle")
+                        Label(.localized("More Settings"), systemImage: "ellipsis.circle")
                     }
                 } footer: {
                     Text(.localized("Configure the apps way of installing, its zip compression levels, and custom modifications to apps."))
