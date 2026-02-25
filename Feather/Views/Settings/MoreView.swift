@@ -20,8 +20,9 @@ struct MoreView: View {
 					}
 					Spacer()
 					Button(action: {
-						if let url = URL(string: "https://novadev.vip/resources/dns/") {
-							UIApplication.shared.open(url)
+						guard let url = URL(string: "https://novadev.vip/resources/dns/") else { return }
+						Task { @MainActor in
+							await UIApplication.shared.open(url)
 						}
 					}) {
 						Image(systemName: "questionmark.circle.fill")

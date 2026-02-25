@@ -64,7 +64,9 @@ struct SourceNewsCardInfoView: View {
 						
 						if let url = new.url {
 							Button {
-								UIApplication.shared.open(url)
+								Task { @MainActor in
+									await UIApplication.shared.open(url)
+								}
 							} label: {
 								NBSheetButton(title: .localized("Open"), systemImage: "arrow.up.right")
 							}
