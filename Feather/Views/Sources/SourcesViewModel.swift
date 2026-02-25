@@ -11,8 +11,9 @@ import SwiftUI
 import NimbleJSON
 
 // MARK: - Class
+@MainActor
 final class SourcesViewModel: ObservableObject {
-    @MainActor static let shared = SourcesViewModel()
+    static let shared = SourcesViewModel()
     
     typealias RepositoryDataHandler = Result<ASRepository, Error>
     
@@ -37,45 +38,50 @@ final class SourcesViewModel: ObservableObject {
         }
         
         let sourcesArray = Array(sources)
-        
+
         for startIndex in stride(from: 0, to: sourcesArray.count, by: batchSize) {
             let endIndex = min(startIndex + batchSize, sourcesArray.count)
             let batch = sourcesArray[startIndex..<endIndex]
-            
-            let batchResults = await withTaskGroup(of: (AltSource, ASRepository?).self, returning: [AltSource: ASRepository].self) { group in
-                for source in batch {
-                    group.addTask {
-                        guard let url = source.sourceURL else {
-                            return (source, nil)
-                        }
 
-                        return await withCheckedContinuation { continuation in
-                            Task { @MainActor in
-                                self._dataService.fetch(from: url) { (result: RepositoryDataHandler) in
-                                    switch result {
-                                    case .success(let repo):
-                                        continuation.resume(returning: (source, repo))
-                                    case .failure(_):
-                                        continuation.resume(returning: (source, nil))
-                                    }
-                                }
-                            }
+            // Prepare Sendable value types for concurrent work
+            let items: [(key: UUID, url: URL?)] = batch.map { source in
+                return (UUID(), source.sourceURL)
+            }
+
+            // Map UUIDs back to AltSource on the main actor after work completes
+            var keyToSource: [UUID: AltSource] = [:]
+            for (index, source) in batch.enumerated() {
+                keyToSource[items[index].key] = source
+            }
+
+            let batchResults = await withTaskGroup(of: (UUID, ASRepository?).self, returning: [UUID: ASRepository].self) { group in
+                for item in items {
+                    group.addTask {
+                        guard let url = item.url else { return (item.key, nil) }
+                        do {
+                            let (data, _) = try await URLSession.shared.data(from: url)
+                            let repo = try JSONDecoder().decode(ASRepository.self, from: data)
+                            return (item.key, repo)
+                        } catch {
+                            return (item.key, nil)
                         }
                     }
                 }
 
-                var results = [AltSource: ASRepository]()
-                for await (source, repo) in group {
+                var results = [UUID: ASRepository]()
+                for await (key, repo) in group {
                     if let repo {
-                        results[source] = repo
+                        results[key] = repo
                     }
                 }
                 return results
             }
 
             await MainActor.run {
-                for (source, repo) in batchResults {
-                    self.sources[source] = repo
+                for (key, repo) in batchResults {
+                    if let source = keyToSource[key] {
+                        self.sources[source] = repo
+                    }
                 }
             }
         }

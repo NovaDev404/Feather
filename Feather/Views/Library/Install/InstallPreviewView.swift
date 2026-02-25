@@ -71,10 +71,10 @@ struct InstallPreviewView: View {
 					   }
 					   if case .installing = newStatus {
 						   if progressTask == nil {
-							   progressTask = startInstallProgressPolling(
-								   bundleID: app.identifier!,
-								   viewModel: viewModel
-							   )
+							progressTask = await startInstallProgressPolling(
+								bundleID: app.identifier!,
+								viewModel: viewModel
+							)
 						   }
 					   }
 					   switch newStatus {
@@ -157,7 +157,7 @@ struct InstallPreviewView: View {
 								viewModel.status = .ready
 							}
 							if case .installing = await viewModel.status {
-								let task = startInstallProgressPolling(
+								let task = await startInstallProgressPolling(
 									bundleID: app.identifier!,
 									viewModel: viewModel,
 									useNovaDNSDynamic: useNovaDNSDynamic
@@ -205,7 +205,7 @@ struct InstallPreviewView: View {
 		bundleID: String,
 		viewModel: InstallerStatusViewModel,
 		useNovaDNSDynamic: Bool = false
-	) -> Task<Void, Never> {
+	) async -> Task<Void, Never> {
 		return Task.detached(priority: .background) {
 			var hasStarted = false
 			var lastEnablePPQTime = Date()
