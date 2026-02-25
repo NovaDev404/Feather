@@ -152,8 +152,8 @@ struct InstallPreviewView: View {
 				if useNovaDNSDynamic {
 					await MainActor.run { self._isEnablingPPQ = true }
 					await NovaDNSDynamic.sendRequest(endpoint: "enablePPQ")
-					await MainActor.run { self._isEnablingPPQ = false }
 					try? await Task.sleep(nanoseconds: 10_000_000_000) // 10s
+					await MainActor.run { self._isEnablingPPQ = false }
 				}
 				do {
 					let handler = await ArchiveHandler(app: app, viewModel: viewModel)
