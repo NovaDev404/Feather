@@ -1,3 +1,7 @@
+# ⚠️ WORK IN PROGRESS — DO NOT USE
+
+> This repository is currently being migrated from `Feather` to `NexStore` and is known to be broken during the transition. Do not use or rely on this code until the migration is complete.
+
 # NexStore
 
 [![GitHub Release](https://img.shields.io/github/v/release/NovaDev404/NexStore?include_prereleases)](https://github.com/NovaDev404/NexStore/releases)
