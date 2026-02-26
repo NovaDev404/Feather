@@ -37,13 +37,6 @@ Visit [releases](https://github.com/NovaDev404/Feather/releases) and get the lat
 
 Visit the [HOW IT WORKS](./HOW_IT_WORKS.md) page.
 
-## Sponsors
-
-| Thanks to all my [sponsors](https://github.com/sponsors/khcrysalis)!! |
-|:-:|
-| <img src="https://raw.githubusercontent.com/khcrysalis/github-sponsor-graph/main/graph.png"> |
-| _**"samara is cute" - Vendicated**_ |
-
 ## Star History
 
 <a href="https://star-history.com/#NovaDev404/Feather&Date">
@@ -57,6 +50,7 @@ Visit the [HOW IT WORKS](./HOW_IT_WORKS.md) page.
 ## Acknowledgements
 
 - [Samara](https://github.com/khcrysalis) - The maker
+- [NovaDev404](https://github.com/NovaDev404) - Changes on this fork.
 - [idevice](https://github.com/jkcoxson/idevice) - Backend for builds with this included, used for communication with `installd`.
 - [*.backloop.dev](https://backloop.dev/) - localhost with public CA signed SSL certificate
 - [Vapor](https://github.com/vapor/vapor) - A server-side Swift HTTP web framework.
