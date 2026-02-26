@@ -29,8 +29,8 @@ extension SourceAppsView {
 
 // MARK: - View
 struct SourceAppsView: View {
-	@AppStorage("Feather.sortOptionRawValue") private var _sortOptionRawValue: String = SortOption.default.rawValue
-	@AppStorage("Feather.sortAscending") private var _sortAscending: Bool = true
+	@AppStorage("NexStore.sortOptionRawValue") private var _sortOptionRawValue: String = SortOption.default.rawValue
+	@AppStorage("NexStore.sortAscending") private var _sortAscending: Bool = true
 	
 	@State private var _sortOption: SortOption = .default
 	@State private var _selectedRoute: SourceAppRoute?

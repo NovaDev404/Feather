@@ -24,22 +24,22 @@
 
 /* Begin PBXFileReference section */
 		336D43972DB7454A00206400 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS18.2.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		3379C1B92DA869A1004372DA /* Feather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3379C1B92DA869A1004372DA /* NexStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NexStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3371F6492DA92A1800281AC6 /* Exceptions for "Feather" folder in "Feather" target */ = {
+		3371F6492DA92A1800281AC6 /* Exceptions for "NexStore" folder in "NexStore" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Resources/ellekit.deb,
 				Resources/Info.plist,
 			);
-			target = 3379C1B82DA869A1004372DA /* Feather */;
+			target = 3379C1B82DA869A1004372DA /* NexStore */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		33CF134C2DB5B9BC0021D4C5 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather" target */ = {
+		33CF134C2DB5B9BC0021D4C5 /* Exceptions for "NexStore" folder in "Copy Bundle Resources" phase from "NexStore" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = 3379C1B72DA869A1004372DA /* Resources */;
 			membershipExceptions = (
@@ -49,13 +49,13 @@
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		3379C1BB2DA869A1004372DA /* Feather */ = {
+		3379C1BB2DA869A1004372DA /* NexStore */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				3371F6492DA92A1800281AC6 /* Exceptions for "Feather" folder in "Feather" target */,
-				33CF134C2DB5B9BC0021D4C5 /* Exceptions for "Feather" folder in "Copy Bundle Resources" phase from "Feather" target */,
+				3371F6492DA92A1800281AC6 /* Exceptions for "NexStore" folder in "NexStore" target */,
+				33CF134C2DB5B9BC0021D4C5 /* Exceptions for "NexStore" folder in "Copy Bundle Resources" phase from "NexStore" target */,
 			);
-			path = Feather;
+			path = NexStore;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -95,7 +95,7 @@
 		3379C1B02DA869A1004372DA = {
 			isa = PBXGroup;
 			children = (
-				3379C1BB2DA869A1004372DA /* Feather */,
+				3379C1BB2DA869A1004372DA /* NexStore */,
 				3371F7302DA9ECDD00281AC6 /* Frameworks */,
 				3379C1BA2DA869A1004372DA /* Products */,
 			);
@@ -104,7 +104,7 @@
 		3379C1BA2DA869A1004372DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3379C1B92DA869A1004372DA /* Feather.app */,
+				3379C1B92DA869A1004372DA /* NexStore.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,9 +112,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3379C1B82DA869A1004372DA /* Feather */ = {
+		3379C1B82DA869A1004372DA /* NexStore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3379C1CD2DA869A3004372DA /* Build configuration list for PBXNativeTarget "Feather" */;
+			buildConfigurationList = 3379C1CD2DA869A3004372DA /* Build configuration list for PBXNativeTarget "NexStore" */;
 			buildPhases = (
 				3379C1B52DA869A1004372DA /* Sources */,
 				3379C1B62DA869A1004372DA /* Frameworks */,
@@ -127,9 +127,9 @@
 				339776072DC9D0F800642FFB /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				3379C1BB2DA869A1004372DA /* Feather */,
+				3379C1BB2DA869A1004372DA /* NexStore */,
 			);
-			name = Feather;
+			name = NexStore;
 			packageProductDependencies = (
 				3371F7312DA9ECDD00281AC6 /* Zip */,
 				33CF13382DB5ACFB0021D4C5 /* SWCompression */,
@@ -144,8 +144,8 @@
 				33693A072DC8BF5B00730215 /* AltSourceKit */,
 				3349E7662DEFB46F00E317ED /* IDeviceSwift */,
 			);
-			productName = Feather;
-			productReference = 3379C1B92DA869A1004372DA /* Feather.app */;
+			productName = NexStore;
+			productReference = 3379C1B92DA869A1004372DA /* NexStore.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -164,7 +164,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3379C1B42DA869A1004372DA /* Build configuration list for PBXProject "Feather" */;
+			buildConfigurationList = 3379C1B42DA869A1004372DA /* Build configuration list for PBXProject "NexStore" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -199,7 +199,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3379C1B82DA869A1004372DA /* Feather */,
+				3379C1B82DA869A1004372DA /* NexStore */,
 			);
 		};
 /* End PBXProject section */
@@ -227,7 +227,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Will copy acknowledgements\"\n\nACKNOWLEDGEMENTS_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/com.mono0926.LicensePlist.Output\nDESTINATION_PATH=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/\n\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/thewonderofyou.Feather \"${DESTINATION_PATH}\"\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/thewonderofyou.Feather.plist \"${DESTINATION_PATH}\"\nrm -rf \"${ACKNOWLEDGEMENTS_DIR}\"\n";
+			shellScript = "echo \"Will copy acknowledgements\"\n\nACKNOWLEDGEMENTS_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/com.mono0926.LicensePlist.Output\nDESTINATION_PATH=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/\n\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/com.novadev.nexstore \"${DESTINATION_PATH}\"\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/com.novadev.nexstore.plist \"${DESTINATION_PATH}\"\nrm -rf \"${ACKNOWLEDGEMENTS_DIR}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -374,7 +374,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "NexStore/Supporting Files/NexStore.entitlements";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMPRESS_PNG_FILES = NO;
@@ -388,8 +388,8 @@
 					"$(inherited)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Feather/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Feather;
+				INFOPLIST_FILE = NexStore/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NexStore;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright (c) 2024 Samara M";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -407,12 +407,12 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Feather/Resources",
-					"$(PROJECT_DIR)/Feather/Resources/idevice",
+					"$(PROJECT_DIR)/NexStore/Resources",
+					"$(PROJECT_DIR)/NexStore/Resources/idevice",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 2.6.0;
-				PRODUCT_BUNDLE_IDENTIFIER = thewonderofyou.Feather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novadev.nexstore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
@@ -423,7 +423,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Feather/Supporting Files/Feather-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "NexStore/Supporting Files/NexStore-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
@@ -439,7 +439,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Feather/Supporting Files/Feather.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "NexStore/Supporting Files/FeatNexStoreher.entitlements";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMPRESS_PNG_FILES = NO;
@@ -452,8 +452,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Feather/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Feather;
+				INFOPLIST_FILE = NexStore/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NexStore;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright (c) 2024 Samara M";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -471,12 +471,12 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Feather/Resources",
-					"$(PROJECT_DIR)/Feather/Resources/idevice",
+					"$(PROJECT_DIR)/NexStore/Resources",
+					"$(PROJECT_DIR)/NexStore/Resources/idevice",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 2.6.0;
-				PRODUCT_BUNDLE_IDENTIFIER = thewonderofyou.Feather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.novadev.nexstore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
@@ -487,7 +487,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Feather/Supporting Files/Feather-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "NexStore/Supporting Files/NexStore-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 16.0;
@@ -498,7 +498,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3379C1B42DA869A1004372DA /* Build configuration list for PBXProject "Feather" */ = {
+		3379C1B42DA869A1004372DA /* Build configuration list for PBXProject "NexStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3379C1CB2DA869A3004372DA /* Debug */,
@@ -507,7 +507,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3379C1CD2DA869A3004372DA /* Build configuration list for PBXNativeTarget "Feather" */ = {
+		3379C1CD2DA869A3004372DA /* Build configuration list for PBXNativeTarget "NexStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3379C1CE2DA869A3004372DA /* Debug */,

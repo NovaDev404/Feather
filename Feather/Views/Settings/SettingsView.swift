@@ -13,7 +13,7 @@ import IDeviceSwift
 
 // MARK: - View
 struct SettingsView: View {
-	@AppStorage("feather.selectedCert") private var _storedSelectedCert: Int = 0
+	@AppStorage("nexstore.selectedCert") private var _storedSelectedCert: Int = 0
     @State private var _currentIcon: String? = UIApplication.shared.alternateIconName
 	
 	// MARK: Fetch
@@ -35,7 +35,7 @@ struct SettingsView: View {
 
     
     private let _donationsUrl = "https://github.com/sponsors/khcrysalis"
-    private let _githubUrl = "https://github.com/khcrysalis/Feather"
+    private let _githubUrl = "https://github.com/khcrysalis/NexStore"
     
     // MARK: Body
     var body: some View {
@@ -160,10 +160,10 @@ extension SettingsView {
     private func _makeGitHubIssueURL(url: String) -> String {
         var configurationSection = "### App Configuration:\n"
 		
-        switch UserDefaults.standard.integer(forKey: "Feather.installationMethod") {
+        switch UserDefaults.standard.integer(forKey: "NexStore.installationMethod") {
         case 0: // Server
-            let serverMethod = UserDefaults.standard.integer(forKey: "Feather.serverMethod")
-            let ipFix = UserDefaults.standard.bool(forKey: "Feather.ipFix")
+            let serverMethod = UserDefaults.standard.integer(forKey: "NexStore.serverMethod")
+            let ipFix = UserDefaults.standard.bool(forKey: "NexStore.ipFix")
             let serverType = (serverMethod == 0) ? "Fully Local" : "Semi Local"
             configurationSection += "- Install method: `Server`\n"
             configurationSection += "  - Server type: `\(serverType)`\n"

@@ -623,7 +623,7 @@
       }
     },
     "About %@" : {
-      "comment" : "About Feather",
+      "comment" : "About NexStore",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -1029,7 +1029,7 @@
         "cs" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Všechny soubory Featheru jsou v složce Dokumenty, zde jsou na ně rychlé odkazy."
+            "value" : "Všechny soubory NexStoreu jsou v složce Dokumenty, zde jsou na ně rychlé odkazy."
           }
         },
         "de" : {
@@ -1047,7 +1047,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Semua berkas Feather berada di direktori dokumen, berikut beberapa tautan cepat ke berkas-berkas tersebut."
+            "value" : "Semua berkas NexStore berada di direktori dokumen, berikut beberapa tautan cepat ke berkas-berkas tersebut."
           }
         },
         "it" : {
@@ -1059,7 +1059,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wszystkie pliki Feather znajdują się w katalogu dokumentów, oto szybkie odnośniki do nich."
+            "value" : "Wszystkie pliki NexStore znajdują się w katalogu dokumentów, oto szybkie odnośniki do nich."
           }
         },
         "tr" : {
@@ -1071,7 +1071,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tất cả các file của Feather có thể được tìm thấy trong ứng dụng Tệp, đây là một số liên kết nhanh đến chúng."
+            "value" : "Tất cả các file của NexStore có thể được tìm thấy trong ứng dụng Tệp, đây là một số liên kết nhanh đến chúng."
           }
         },
         "zh-Hans" : {
@@ -3963,7 +3963,7 @@
       }
     },
     "Enjoying %@?" : {
-      "comment" : "Enjoying Feather?",
+      "comment" : "Enjoying NexStore?",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -8858,49 +8858,49 @@
         }
       }
     },
-    "Open an [issue](https://github.com/khcrysalis/Feather/issues) on GitHub if you want your source to be featured." : {
+    "Open an [issue](https://github.com/khcrysalis/NexStore/issues) on GitHub if you want your source to be featured." : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erstelle ein [Issue](https://github.com/khcrysalis/Feather/issues) auf GitHub wenn du deine Quelle aufgelistet haben möchtest."
+            "value" : "Erstelle ein [Issue](https://github.com/khcrysalis/NexStore/issues) auf GitHub wenn du deine Quelle aufgelistet haben möchtest."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open an [issue](https://github.com/khcrysalis/Feather/issues) on GitHub if you want your source to be featured."
+            "value" : "Open an [issue](https://github.com/khcrysalis/NexStore/issues) on GitHub if you want your source to be featured."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apri un [problema](https://github.com/khcrysalis/Feather/issues) su GitHub se vuoi che la tua fonte sia consigliata."
+            "value" : "Apri un [problema](https://github.com/khcrysalis/NexStore/issues) su GitHub se vuoi che la tua fonte sia consigliata."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otwórz [issue](https://github.com/khcrysalis/Feather/issues) na GitHubie, jeśli chcesz, aby Twoje źródło zostało wyróżnione."
+            "value" : "Otwórz [issue](https://github.com/khcrysalis/NexStore/issues) na GitHubie, jeśli chcesz, aby Twoje źródło zostało wyróżnione."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kaynağınızın öne çıkarılmasını istiyorsanız GitHub’da bir [sorun kaydı](https://github.com/khcrysalis/Feather/issues) açın."
+            "value" : "Kaynağınızın öne çıkarılmasını istiyorsanız GitHub’da bir [sorun kaydı](https://github.com/khcrysalis/NexStore/issues) açın."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mở [issue](https://github.com/khcrysalis/Feather/issues) trên GitHub nếu bạn muốn nguồn của mình được giới thiệu."
+            "value" : "Mở [issue](https://github.com/khcrysalis/NexStore/issues) trên GitHub nếu bạn muốn nguồn của mình được giới thiệu."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "开启一个[issue](https://github.com/khcrysalis/Feather/issues)"
+            "value" : "开启一个[issue](https://github.com/khcrysalis/NexStore/issues)"
           }
         }
       }
@@ -12455,7 +12455,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bağış yaparak desteğinizi gösterin! Eğer bağış yapamıyorsanız Feather’ı dilden dile yaymak da işe yarar!"
+            "value" : "Bağış yaparak desteğinizi gösterin! Eğer bağış yapamıyorsanız NexStore’ı dilden dile yaymak da işe yarar!"
           }
         },
         "vi" : {

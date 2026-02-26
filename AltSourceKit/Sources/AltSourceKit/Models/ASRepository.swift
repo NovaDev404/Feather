@@ -85,7 +85,7 @@ public struct ASRepository: Sendable, Decodable, Hashable, Identifiable {
 			!apps.isEmpty
 		else {
 			throw NSError(
-				domain: "FeatherSources",
+				domain: "NexStoreSources",
 				code: 44521,
 				userInfo: [
 					NSLocalizedDescriptionKey: "This source does not contain any apps."
@@ -298,7 +298,7 @@ extension ASRepository {
 				!marketplaceID.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
 			{
 				throw NSError(
-					domain: "FeatherSources",
+					domain: "NexStoreSources",
 					code: 112789, userInfo: [NSLocalizedDescriptionKey: "AltStore PAL repositories aren't supported: \(id ?? "")"]
 				)
 			}

@@ -1,6 +1,6 @@
-NAME := Feather
+NAME := NexStore
 PLATFORM := iphoneos
-SCHEMES := Feather
+SCHEMES := NexStore
 TMP := $(TMPDIR)/$(NAME)
 STAGE := $(TMP)/stage
 APP := $(TMP)/Build/Products/Release-$(PLATFORM)
@@ -27,7 +27,7 @@ deps:
 
 $(SCHEMES): deps
 	xcodebuild \
-	    -project Feather.xcodeproj \
+	    -project NexStore.xcodeproj \
 	    -scheme "$@" \
 	    -configuration Release \
 	    -arch arm64 \

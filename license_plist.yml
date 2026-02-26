@@ -3,7 +3,7 @@ options:
     - LICENSE
   packagePaths:
     - Package.swift
-  prefix: thewonderofyou.Feather
+  prefix: com.novadev
   xcworkspacePath: "*.xcworkspace"
   addVersionNumbers: false
   singlePage: false

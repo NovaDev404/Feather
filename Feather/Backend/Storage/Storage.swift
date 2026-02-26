@@ -13,7 +13,7 @@ final class Storage: ObservableObject {
 	static let shared = Storage()
 	let container: NSPersistentContainer
 	
-	private let _name: String = "Feather"
+	private let _name: String = "NexStore"
 
 	init(inMemory: Bool = false) {
 		container = NSPersistentContainer(name: _name)
@@ -82,6 +82,6 @@ final class Storage: ObservableObject {
 		try? FileManager.default.removeFileIfNeeded(at: FileManager.default.signed)
 		try? FileManager.default.removeFileIfNeeded(at: FileManager.default.unsigned)
 		try? FileManager.default.removeFileIfNeeded(at: FileManager.default.certificates)
-		UserDefaults.standard.set(0, forKey: "feather.selectedCert")
+		UserDefaults.standard.set(0, forKey: "NexStore.selectedCert")
 	}
 }

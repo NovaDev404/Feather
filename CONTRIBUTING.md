@@ -1,6 +1,6 @@
 # Contributing
 
-Feather is a sideloading app meant to be used on stock versions, to keep compatibility we have to utililize stock features to keep it working. As such, we have specific contribution rules in place to maintain this and Feathers integrity.
+NexStore is a sideloading app meant to be used on stock versions, to keep compatibility we have to utililize stock features to keep it working. As such, we have specific contribution rules in place to maintain this and NexStore's integrity.
 
 Any contributions should follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
@@ -9,9 +9,9 @@ Any contributions should follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
 - **No usage of any exploits of any kind**.
 - **No contributions related to retrieving any signing certificates owned by companies**.
 - **Modifying any hardcoded links should be discussed before changing**.
-- **If you're planning on making a large contribution, please [make an issue](https://github.com/khcrysalis/Feather) beforehand**.
+- **If you're planning on making a large contribution, please [make an issue](https://github.com/NovaDev404/NexStore) beforehand**.
 - **Your contributions should be licensed appropriately**. 
-  - Feather: GPLv3
+  - NexStore: GPLv3
   - AltSourceKit: MIT
   - NimbleKit: MIT 
   - Zsign: MIT
@@ -19,7 +19,7 @@ Any contributions should follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
   - This includes localizations
 - **Code cleaning contributions are okay**.
 
-## Contributing to Feather
+## Contributing to NexStore
 
 #### Compiling requirements
 
@@ -29,17 +29,17 @@ Any contributions should follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 1. Clone repository
     ```sh
-    git clone https://github.com/khcrysalis/Feather --recursive
+    git clone https://github.com/NovaDev404/NexStore --recursive
     ```
     - `Zsign` is a submodule, recursive is required.
 
 2. Opening with Xcode
     ```sh
-    cd Feather && open Feather.xcworkspace
+    cd NexStore && open NexStore.xcworkspace
     ```
 
 #### Localizations
-- For localizations, you will need Xcode 15 or higher to edit the `Feather/Resources/Localizable.xcstrings` file, or some alternative software which allows you to edit an `.xcstrings` file. 
+- For localizations, you will need Xcode 15 or higher to edit the `NexStore/Resources/Localizable.xcstrings` file, or some alternative software which allows you to edit an `.xcstrings` file. 
 - We use a newer format for convenience, but at a cost of less accessibility when it comes to actually editing it.
   - **Disclaimer: do NOT edit by hand.**
 - Some localizations were imported from V1, if they don't make sense please feel free to change them.

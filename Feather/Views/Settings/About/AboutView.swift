@@ -27,7 +27,7 @@ struct AboutView: View {
 	@State private var _donators: [CreditsModel] = []
 	@State var isLoading = true
 	
-	private let _creditsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/feather/creditsv2.json"
+	private let _creditsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/nexstore/creditsv2.json"
 	private let _donatorsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/sponsors/credits.json"
 	
 	// MARK: Body

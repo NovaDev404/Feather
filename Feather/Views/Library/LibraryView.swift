@@ -176,7 +176,7 @@ struct LibraryView: View {
 						guard !urls.isEmpty else { return }
 						
 						for url in urls {
-							let id = "FeatherManualDownload_\(UUID().uuidString)"
+							let id = "NexStoreManualDownload_\(UUID().uuidString)"
 							let dl = downloadManager.startArchive(from: url, id: id)
 							try? downloadManager.handlePachageFile(url: url, dl: dl)
 						}
@@ -192,11 +192,11 @@ struct LibraryView: View {
 				}
 				Button(.localized("OK")) {
 					if let url = URL(string: _alertDownloadString) {
-						_ = downloadManager.startDownload(from: url, id: "FeatherManualDownload_\(UUID().uuidString)")
+						_ = downloadManager.startDownload(from: url, id: "NexStoreManualDownload_\(UUID().uuidString)")
 					}
 				}
 			}
-			.onReceive(NotificationCenter.default.publisher(for: Notification.Name("Feather.installApp"))) { _ in
+			.onReceive(NotificationCenter.default.publisher(for: Notification.Name("NexStore.installApp"))) { _ in
 				if let latest = _signedApps.first {
 					_selectedInstallAppPresenting = AnyApp(base: latest)
 				}

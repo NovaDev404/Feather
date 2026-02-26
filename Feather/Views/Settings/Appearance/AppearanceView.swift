@@ -12,23 +12,23 @@ import UIKit
 // MARK: - View
 // dear god help me
 struct AppearanceView: View {
-	@AppStorage("Feather.userInterfaceStyle")
+	@AppStorage("NexStore.userInterfaceStyle")
 	private var _userIntefacerStyle: Int = UIUserInterfaceStyle.unspecified.rawValue
 	
-	@AppStorage("Feather.shouldTintIcons")
+	@AppStorage("NexStore.shouldTintIcons")
 	private var _shouldTintIcons: Bool = false
 	
-	@AppStorage("Feather.shouldChangeIconsBasedOffStyle")
+	@AppStorage("NexStore.shouldChangeIconsBasedOffStyle")
 	private var _shouldChangeIconsBasedOffStyle: Bool = false
 	
-	@AppStorage("Feather.storeCellAppearance")
+	@AppStorage("NexStore.storeCellAppearance")
 	private var _storeCellAppearance: Int = 0
 	private let _storeCellAppearanceMethods: [(name: String, desc: String)] = [
 		(.localized("Standard"), .localized("Default style for the app, only includes subtitle.")),
 		(.localized("Big Description"), .localized("Adds the localized description of the app."))
 	]
 	
-	@AppStorage("Feather.userTintColor")
+	@AppStorage("NexStore.userTintColor")
 	private var _selectedColorHex: String = "#848ef9"
 	
 	private var _tintColorBinding: Binding<Color> {

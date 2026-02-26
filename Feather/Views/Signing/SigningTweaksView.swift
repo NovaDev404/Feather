@@ -61,7 +61,7 @@ struct SigningTweaksView: View {
 					guard !urls.isEmpty else { return }
 					
 					for url in urls {
-						FileManager.default.moveAndStore(url, with: "FeatherTweak") { url in
+						FileManager.default.moveAndStore(url, with: "NexStoreTweak") { url in
 							options.injectionFiles.append(url)
 						}
 					}

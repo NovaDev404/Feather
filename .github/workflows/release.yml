@@ -16,7 +16,7 @@ jobs:
         run: |
           sudo xcode-select -s /Applications/Xcode_26.2.app/Contents/Developer
 
-      - name: Compile Feather
+      - name: Compile NexStore
         run: | 
           agvtool new-version -all $(git rev-parse HEAD)
           make
@@ -32,7 +32,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Feather v${{ env.VERSION }}
+          name: NexStore v${{ env.VERSION }}
           tag_name: v${{ env.VERSION }}
           files: |
             upload/*ipa

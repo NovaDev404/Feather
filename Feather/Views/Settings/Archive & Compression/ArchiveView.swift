@@ -11,8 +11,8 @@ import NimbleViews
 
 // MARK: - View
 struct ArchiveView: View {
-	@AppStorage("Feather.compressionLevel") private var _compressionLevel: Int = ZipCompression.DefaultCompression.rawValue
-	@AppStorage("Feather.useShareSheetForArchiving") private var _useShareSheet: Bool = false
+	@AppStorage("NexStore.compressionLevel") private var _compressionLevel: Int = ZipCompression.DefaultCompression.rawValue
+	@AppStorage("NexStore.useShareSheetForArchiving") private var _useShareSheet: Bool = false
 	
 	// MARK: Body
     var body: some View {

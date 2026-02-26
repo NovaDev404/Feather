@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3379C1B82DA869A1004372DA"
-               BuildableName = "Feather.app"
-               BlueprintName = "Feather"
-               ReferencedContainer = "container:Feather.xcodeproj">
+               BuildableName = "NexStore.app"
+               BlueprintName = "NexStore"
+               ReferencedContainer = "container:NexStore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3379C1B82DA869A1004372DA"
-            BuildableName = "Feather.app"
-            BlueprintName = "Feather"
-            ReferencedContainer = "container:Feather.xcodeproj">
+            BuildableName = "NexStore.app"
+            BlueprintName = "NexStore"
+            ReferencedContainer = "container:NexStore.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3379C1B82DA869A1004372DA"
-            BuildableName = "Feather.app"
-            BlueprintName = "Feather"
-            ReferencedContainer = "container:Feather.xcodeproj">
+            BuildableName = "NexStore.app"
+            BlueprintName = "NexStore"
+            ReferencedContainer = "container:NexStore.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

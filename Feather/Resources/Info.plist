@@ -10,7 +10,7 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeIconFile</key>
-			<string>feather_extension</string>
+			<string>nexstore_extension</string>
 			<key>CFBundleTypeName</key>
 			<string>iOS Package Archive</string>
 			<key>CFBundleTypeRole</key>
@@ -19,12 +19,12 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>thewonderofyou.Feather.ipa</string>
+				<string>com.novadev.nexstore.ipa</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeIconFile</key>
-			<string>feather_extension</string>
+			<string>nexstore_extension</string>
 			<key>CFBundleTypeName</key>
 			<string>AirDrop friendly iOS app</string>
 			<key>CFBundleTypeRole</key>
@@ -33,7 +33,7 @@
 			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>thewonderofyou.Feather.tipa</string>
+				<string>com.novadev.nexstore.tipa</string>
 			</array>
 		</dict>
 	</array>
@@ -112,12 +112,12 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLIconFile</key>
-			<string>feather_extension</string>
+			<string>nexstore_extension</string>
 			<key>CFBundleURLName</key>
-			<string>thewonderofyou.Feather</string>
+			<string>com.novadev.nexstore</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>feather</string>
+				<string>nexstore</string>
 			</array>
 		</dict>
 	</array>
@@ -145,14 +145,14 @@
 			<key>UTTypeDescription</key>
 			<string>iOS Package Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>feather_extension</string>
+			<string>nexstore_extension</string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconText</key>
 				<string>IPA</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>thewonderofyou.Feather.ipa</string>
+			<string>com.novadev.nexstore.ipa</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -175,7 +175,7 @@
 			<key>UTTypeDescription</key>
 			<string>AirDrop friendly iOS app</string>
 			<key>UTTypeIconFile</key>
-			<string>feather_extension</string>
+			<string>nexstore_extension</string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -184,7 +184,7 @@
 				<string>TIPA</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>thewonderofyou.Feather.tipa</string>
+			<string>com.novadev.nexstore.tipa</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>

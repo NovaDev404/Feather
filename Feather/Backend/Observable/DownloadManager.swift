@@ -130,7 +130,7 @@ class DownloadManager: NSObject, ObservableObject {
     }
     
 	func isManualDownload(_ string: String) -> Bool {
-		return string.contains("FeatherManualDownload")
+		return string.contains("NexStoreManualDownload")
 	}
 	
 	func getDownload(by id: String) -> Download? {
@@ -171,7 +171,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 		guard let download = getDownloadTask(by: downloadTask) else { return }
 		
 		let tempDirectory = FileManager.default.temporaryDirectory
-		let customTempDir = tempDirectory.appendingPathComponent("FeatherDownloads", isDirectory: true)
+		let customTempDir = tempDirectory.appendingPathComponent("NexStoreDownloads", isDirectory: true)
 		
 		do {
 			try FileManager.default.createDirectoryIfNeeded(at: customTempDir)

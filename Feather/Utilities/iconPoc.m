@@ -217,11 +217,11 @@ UIImage* iconTest(NSURL *bundleURL) {
     // 0 = light mode, 1 = dark mode
 //    descriptor.appearance = 0;
 	NSInteger style =
-		[NSUserDefaults.standardUserDefaults integerForKey:@"Feather.userInterfaceStyle"];
+		[NSUserDefaults.standardUserDefaults integerForKey:@"NexStore.userInterfaceStyle"];
 	NSInteger variant =
-		[NSUserDefaults.standardUserDefaults integerForKey:@"Feather.shouldTintIcons"];
+		[NSUserDefaults.standardUserDefaults integerForKey:@"NexStore.shouldTintIcons"];
 	NSInteger lightDark =
-		[NSUserDefaults.standardUserDefaults integerForKey:@"Feather.shouldChangeIconsBasedOffStyle"];
+		[NSUserDefaults.standardUserDefaults integerForKey:@"NexStore.shouldChangeIconsBasedOffStyle"];
 
 	// Resolve "system / unspecified" dynamically
 	if (style == UIUserInterfaceStyleUnspecified) {
@@ -255,7 +255,7 @@ UIImage* iconTest(NSURL *bundleURL) {
 static CGColorRef FRCreateCGColorFromHex(void) {
 	NSString *hex =
 		[NSUserDefaults.standardUserDefaults
-			stringForKey:@"Feather.userTintColor"];
+			stringForKey:@"NexStore.userTintColor"];
 
 	if (hex.length == 0) {
 		return UIColor.systemGreenColor.CGColor;

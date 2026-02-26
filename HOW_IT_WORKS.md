@@ -1,6 +1,6 @@
 ## How does it work?
 
-How Feather works is a bit complicated, with having multiple ways to install, app management, tweaks, etc. However, I'll point out how the important features work here.
+How NexStore works is a bit complicated, with having multiple ways to install, app management, tweaks, etc. However, I'll point out how the important features work here.
 
 To start off, we need a validly signed IPA. We can achieve this with Zsign, using a provided IPA using a `.p12` and `.mobileprovision` pair.
 

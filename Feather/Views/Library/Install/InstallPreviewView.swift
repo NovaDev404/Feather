@@ -14,9 +14,9 @@ import OSLog
 struct InstallPreviewView: View {
 	@Environment(\.dismiss) var dismiss
 
-	@AppStorage("Feather.useShareSheetForArchiving") private var _useShareSheet: Bool = false
-	@AppStorage("Feather.installationMethod") private var _installationMethod: Int = 0
-	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
+	@AppStorage("NexStore.useShareSheetForArchiving") private var _useShareSheet: Bool = false
+	@AppStorage("NexStore.installationMethod") private var _installationMethod: Int = 0
+	@AppStorage("NexStore.serverMethod") private var _serverMethod: Int = 0
 	@State private var _isWebviewPresenting = false
 	@State private var progressTask: Task<Void, Never>?
 	@State private var _isEnablingPPQ: Bool = false
@@ -30,7 +30,7 @@ struct InstallPreviewView: View {
 	init(app: AppInfoPresentable, isSharing: Bool = false) {
 		self.app = app
 		self.isSharing = isSharing
-		let viewModel = InstallerStatusViewModel(isIdevice: UserDefaults.standard.integer(forKey: "Feather.installationMethod") == 1)
+		let viewModel = InstallerStatusViewModel(isIdevice: UserDefaults.standard.integer(forKey: "NexStore.installationMethod") == 1)
 		self._viewModel = StateObject(wrappedValue: viewModel)
 		self._installer = StateObject(wrappedValue: try! ServerInstaller(app: app, viewModel: viewModel))
 	}
@@ -143,7 +143,7 @@ struct InstallPreviewView: View {
 			}
 
 			// capture actor-isolated state on the main actor before detaching
-			let useNovaDNSDynamic = UserDefaults.standard.bool(forKey: "Feather.useNovaDNSDynamic")
+			let useNovaDNSDynamic = UserDefaults.standard.bool(forKey: "NexStore.useNovaDNSDynamic")
 			let sharing = isSharing
 			let installationMethod = _installationMethod
 			let useShareSheetLocal = _useShareSheet

@@ -12,7 +12,7 @@ import NukeUI
 @available(iOS 18, *)
 struct ExtendedTabbarView: View {
 	@Environment(\.horizontalSizeClass) var horizontalSizeClass
-	@AppStorage("Feather.tabCustomization") var customization = TabViewCustomization()
+	@AppStorage("NexStore.tabCustomization") var customization = TabViewCustomization()
 	@StateObject var viewModel = SourcesViewModel.shared
 	
 	@State private var _isAddingPresenting = false

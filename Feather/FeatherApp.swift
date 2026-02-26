@@ -11,7 +11,7 @@ import IDeviceSwift
 import OSLog
 
 @main
-struct FeatherApp: App {
+struct NexStoreApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 	
 	let heartbeat = HeartbeatManager.shared
@@ -40,18 +40,18 @@ struct FeatherApp: App {
 			}
 			// dear god help me
 			.onAppear {
-				if let style = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "Feather.userInterfaceStyle")) {
+				if let style = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "NexStore.userInterfaceStyle")) {
 					UIApplication.topViewController()?.view.window?.overrideUserInterfaceStyle = style
 				}
 				
-				UIApplication.topViewController()?.view.window?.tintColor = UIColor(Color(hex: UserDefaults.standard.string(forKey: "Feather.userTintColor") ?? "#848ef9"))
+				UIApplication.topViewController()?.view.window?.tintColor = UIColor(Color(hex: UserDefaults.standard.string(forKey: "NexStore.userTintColor") ?? "#848ef9"))
 			}
 		}
 	}
 	
 	private func _handleURL(_ url: URL) {
-		if url.scheme == "feather" {
-			/// feather://import-certificate?p12=<base64>&mobileprovision=<base64>&password=<base64>
+		if url.scheme == "nexstore" {
+			/// nexstore://import-certificate?p12=<base64>&mobileprovision=<base64>&password=<base64>
 			if url.host == "import-certificate" {
 				guard
 					let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
@@ -100,7 +100,7 @@ struct FeatherApp: App {
 				
 				return
 			}
-			/// feather://export-certificate?callback_template=<template>
+			/// nexstore://export-certificate?callback_template=<template>
 			/// ?callback_template=: This is how we callback to the application requesting the certificate, this will be a url scheme
 			/// 	example: livecontainer%3A%2F%2Fcertificate%3Fcert%3D%24%28BASE64_CERT%29%26password%3D%24%28PASSWORD%29
 			/// 	decoded: livecontainer://certificate?cert=$(BASE64_CERT)&password=$(PASSWORD)
@@ -119,11 +119,11 @@ struct FeatherApp: App {
 					await FR.exportCertificateAndOpenUrl(using: callbackTemplate)
 				}
 			}
-			/// feather://source/<url>
+			/// nexstore://source/<url>
 			if let fullPath = url.validatedScheme(after: "/source/") {
 				FR.handleSource(fullPath) { }
 			}
-			/// feather://install/<url.ipa>
+			/// nexstore://install/<url.ipa>
 			if
 				let fullPath = url.validatedScheme(after: "/install/"),
 				let downloadURL = URL(string: fullPath)
@@ -166,7 +166,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 				config.urlCache = nil
 				return DataLoader(configuration: config)
 			}()
-			let dataCache = try? DataCache(name: "thewonderofyou.Feather.datacache") // disk cache
+			let dataCache = try? DataCache(name: "com.novadev.nexstore.datacache") // disk cache
 			let imageCache = Nuke.ImageCache() // memory cache
 			dataCache?.sizeLimit = 500 * 1024 * 1024
 			imageCache.costLimit = 100 * 1024 * 1024
@@ -197,7 +197,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 	
 	private func _addDefaultCertificates() {
 		guard
-			UserDefaults.standard.bool(forKey: "feather.didImportDefaultCertificates") == false,
+			UserDefaults.standard.bool(forKey: "nexstore.didImportDefaultCertificates") == false,
 			let signingAssetsURL = Bundle.main.url(forResource: "signing-assets", withExtension: nil)
 		else {
 			return
@@ -240,7 +240,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 					
 				}
 			}
-			UserDefaults.standard.set(true, forKey: "feather.didImportDefaultCertificates")
+			UserDefaults.standard.set(true, forKey: "nexstore.didImportDefaultCertificates")
 		} catch {
 			Logger.misc.error("Failed to list signing-assets: \(error)")
 		}

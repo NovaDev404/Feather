@@ -9,7 +9,7 @@ import SwiftUI
 import NimbleViews
 
 struct MoreView: View {
-	@AppStorage("Feather.useNovaDNSDynamic") private var useNovaDNSDynamic: Bool = false
+	@AppStorage("NexStore.useNovaDNSDynamic") private var useNovaDNSDynamic: Bool = false
 
 	var body: some View {
 		NBList(.localized("More Settings")) {
