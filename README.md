@@ -53,7 +53,7 @@ Visit the [HOW IT WORKS](./HOW_IT_WORKS.md) page.
 
 ## Acknowledgements
 
-- [Samara](https://github.com/khcrysalis) - The maker of Feather.
+- [Samara](https://github.com/claration) - The maker of Feather.
 - [NovaDev404](https://github.com/NovaDev404) - Maker of NexStore.
 - [idevice](https://github.com/jkcoxson/idevice) - Backend for builds with this included, used for communication with `installd`.
 - [*.backloop.dev](https://backloop.dev/) - localhost with public CA signed SSL certificate
