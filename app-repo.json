@@ -1,7 +1,7 @@
 {
   "name": "NexStore Repository",
   "identifier": "com.novadev.nexstore-repo",
-  "iconURL": "https://github.com/NovaDev404/NexStore/blob/v1.x/iOS/Resources/Icons/Main/Mac@3x.png?raw=true",
+  "iconURL": "https://github.com/NovaDev404/NexStore/blob/main/NexStore/Resources/Icons/Main/V2Mac@3x.png?raw=true",
   "website": "https://github.com/NovaDev404/NexStore",
   "apps": [
   ],
