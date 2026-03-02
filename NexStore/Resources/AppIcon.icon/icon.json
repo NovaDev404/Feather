@@ -32,12 +32,12 @@
     {
       "layers" : [
         {
-          "image-name" : "nexstore.png",
+          "image-name" : "NexStore.png",
           "name" : "nexstore"
         },
         {
           "glass" : false,
-          "image-name" : "nexstore 5.png",
+          "image-name" : "NexStore 5.png",
           "name" : "nexstore 5",
           "opacity" : 0.14
         }
