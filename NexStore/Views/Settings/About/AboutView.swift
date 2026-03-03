@@ -7,7 +7,6 @@
 
 import SwiftUI
 import NimbleViews
-import NimbleJSON
 
 // MARK: - Extension: Model
 extension AboutView {
@@ -20,13 +19,18 @@ extension AboutView {
 
 // MARK: - View
 struct AboutView: View {
-	typealias CreditsDataHandler = Result<[CreditsModel], Error>
-	private let _dataService = NBFetchService()
-	
 	@State private var _credits: [CreditsModel] = []
 	@State var isLoading = true
-	
-	private let _creditsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/nexstore/creditsv2.json"
+
+	private let _fixedCredits: [CreditsModel] = [
+		.init(name: "NovaDev404", desc: "NexStore Developer", github: "NovaDev404"),
+		.init(name: "Samara", desc: "Feather Developer", github: "claration"),
+		.init(name: "Nyasami", desc: "Contributor", github: "Nyasami"),
+		.init(name: "Adrian Castro", desc: "Contributor", github: "castdrian"),
+		.init(name: "Lakhan Lothiyi", desc: "Repositories", github: "llsc12"),
+		.init(name: "HAHALOSAH", desc: "Operations", github: "HAHALOSAH"),
+		.init(name: "Jackson Coxson", desc: "Idevice", github: "jkcoxson")
+	]
 	
 	// MARK: Body
 	var body: some View {
@@ -68,26 +72,12 @@ struct AboutView: View {
 	}
 	
 	private func _fetchAllData() async {
-		let result = await _fetchCredits(self._creditsUrl, using: _dataService)
 		await MainActor.run {
-			switch result {
-			case .success(let data):
-				self._credits = data
-			case .failure(_):
-				break
-			}
+			self._credits = self._fixedCredits
 		}
 		
 		await MainActor.run {
 			isLoading = false
-		}
-	}
-	
-	private func _fetchCredits(_ urlString: String, using service: NBFetchService) async -> CreditsDataHandler {
-		return await withCheckedContinuation { continuation in
-			service.fetch(from: urlString) { (result: CreditsDataHandler) in
-				continuation.resume(returning: result)
-			}
 		}
 	}
 }
