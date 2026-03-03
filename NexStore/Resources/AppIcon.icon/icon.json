@@ -1,55 +1,13 @@
 {
-  "fill" : {
-    "linear-gradient" : [
-      "srgb:0.47451,0.52157,0.97647,1.00000",
-      "srgb:0.39928,0.44985,0.96515,1.00000"
-    ],
-    "orientation" : {
-      "start" : {
-        "x" : 0.5,
-        "y" : 0
-      },
-      "stop" : {
-        "x" : 0.5,
-        "y" : 0.7
-      }
-    }
-  },
   "groups" : [
     {
       "layers" : [
-
-      ],
-      "shadow" : {
-        "kind" : "neutral",
-        "opacity" : 0.5
-      },
-      "translucency" : {
-        "enabled" : true,
-        "value" : 0.5
-      }
-    },
-    {
-      "layers" : [
-        {
-          "image-name" : "NexStore.png",
-          "name" : "nexstore"
-        },
         {
           "glass" : false,
-          "image-name" : "NexStore 5.png",
-          "name" : "nexstore 5",
-          "opacity" : 0.14
+          "image-name" : "NexStore.png",
+          "name" : "nexstore"
         }
-      ],
-      "shadow" : {
-        "kind" : "neutral",
-        "opacity" : 0.5
-      },
-      "translucency" : {
-        "enabled" : true,
-        "value" : 0.5
-      }
+      ]
     }
   ],
   "supported-platforms" : {

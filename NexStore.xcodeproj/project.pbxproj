@@ -31,6 +31,7 @@
 		3371F6492DA92A1800281AC6 /* Exceptions for "NexStore" folder in "NexStore" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Resources/AppIcon.icon,
 				Resources/ellekit.deb,
 				Resources/Info.plist,
 			);
@@ -43,6 +44,7 @@
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = 3379C1B72DA869A1004372DA /* Resources */;
 			membershipExceptions = (
+				Resources/AppIcon.icon,
 				Resources/ellekit.deb,
 			);
 		};
