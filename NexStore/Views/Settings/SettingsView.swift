@@ -34,17 +34,12 @@ struct SettingsView: View {
 	}
 
     
-    private let _donationsUrl = "https://github.com/sponsors/khcrysalis"
-    private let _githubUrl = "https://github.com/khcrysalis/NexStore"
+    private let _githubUrl = "https://github.com/NovaDev404/NexStore"
     
     // MARK: Body
     var body: some View {
         NBNavigationView(.localized("Settings")) {
             Form {
-				#if !NIGHTLY && !DEBUG
-                SettingsDonationCellView(site: _donationsUrl)
-				#endif
-                
                 _feedback()
                 
                 Section {

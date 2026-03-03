@@ -28,7 +28,6 @@ public struct ASRepository: Sendable, Decodable, Hashable, Identifiable {
 	public var tintColor: Color?
 
 	// special fields
-	public var patreonURL: URL?
 	public var userInfo: UserInfo?
 
 	// apps, news etc.
@@ -61,19 +60,6 @@ public struct ASRepository: Sendable, Decodable, Hashable, Identifiable {
 		self.tintColor =
 			try container.decodeIfPresent(Color.self, forKey: .tintColor)
 
-		let patreonString = try container.decodeIfPresent(String.self, forKey: .patreonURL)
-		
-		// another case of inconsistent altstore stuff
-		if
-			let string = patreonString,
-			!string.isEmpty,
-			let url = URL(string: string)
-		{
-			self.patreonURL = url
-		} else {
-			self.patreonURL = nil
-		}
-
 		self.userInfo = try container.decodeIfPresent(
 			UserInfo.self,
 			forKey: .userInfo
@@ -105,7 +91,6 @@ public struct ASRepository: Sendable, Decodable, Hashable, Identifiable {
 			 subtitle,
 			 description,
 			 website,
-			 patreonURL,
 			 userInfo,
 			 iconURL,
 			 headerURL,
@@ -128,7 +113,7 @@ public struct ASRepository: Sendable, Decodable, Hashable, Identifiable {
 	//		try container.encodeIfPresent(description, forKey: .description)
 	//		try container.encodeIfPresent(website, forKey: .website)
 	//
-	//		try container.encodeIfPresent(patreonURL, forKey: .patreonURL)
+	//		
 	//		try container.encodeIfPresent(userInfo, forKey: .userInfo)
 	//
 	//		try container.encodeIfPresent(apps, forKey: .apps)
@@ -553,7 +538,7 @@ extension ASRepository {
 
 extension ASRepository {
 	public struct UserInfo: Decodable, Hashable, Sendable {
-		public var patreonAccessToken: String?
+		
 	}
 }
 

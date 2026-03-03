@@ -24,11 +24,9 @@ struct AboutView: View {
 	private let _dataService = NBFetchService()
 	
 	@State private var _credits: [CreditsModel] = []
-	@State private var _donators: [CreditsModel] = []
 	@State var isLoading = true
 	
 	private let _creditsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/nexstore/creditsv2.json"
-	private let _donatorsUrl = "https://raw.githubusercontent.com/khcrysalis/project-credits/refs/heads/main/sponsors/credits.json"
 	
 	// MARK: Body
 	var body: some View {
@@ -61,16 +59,6 @@ struct AboutView: View {
 					.transition(.slide)
 				}
 				
-				NBSection(.localized("Sponsors")) {
-					Text(try! AttributedString(markdown: _donators.map {
-						"[\($0.name ?? $0.github)](https://github.com/\($0.github))"
-					}.joined(separator: ", ")))
-					.transition(.slide)
-					
-					Text(.localized("💜 This couldn't of been done without my sponsors!"))
-						.foregroundStyle(.secondary)
-						.padding(.vertical, 2)
-				}
 			}
 		}
 		.animation(.default, value: isLoading)
@@ -80,22 +68,13 @@ struct AboutView: View {
 	}
 	
 	private func _fetchAllData() async {
-		await withTaskGroup(of: (String, CreditsDataHandler).self) { group in
-			group.addTask { return await _fetchCredits(self._creditsUrl, using: _dataService) }
-			group.addTask { return await _fetchCredits(self._donatorsUrl, using: _dataService) }
-			
-			for await (type, result) in group {
-				await MainActor.run {
-					switch result {
-					case .success(let data):
-						if type == "credits" {
-							self._credits = data
-						} else {
-							self._donators = data
-						}
-					case .failure(_): break
-					}
-				}
+		let result = await _fetchCredits(self._creditsUrl, using: _dataService)
+		await MainActor.run {
+			switch result {
+			case .success(let data):
+				self._credits = data
+			case .failure(_):
+				break
 			}
 		}
 		
@@ -104,14 +83,10 @@ struct AboutView: View {
 		}
 	}
 	
-	private func _fetchCredits(_ urlString: String, using service: NBFetchService) async -> (String, CreditsDataHandler) {
-		let type = urlString == _creditsUrl 
-		? "credits"
-		: "donators"
-		
+	private func _fetchCredits(_ urlString: String, using service: NBFetchService) async -> CreditsDataHandler {
 		return await withCheckedContinuation { continuation in
 			service.fetch(from: urlString) { (result: CreditsDataHandler) in
-				continuation.resume(returning: (type, result))
+				continuation.resume(returning: result)
 			}
 		}
 	}
