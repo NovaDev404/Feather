@@ -19,6 +19,9 @@ deps:
 	rm -rf deps || true
 	mkdir -p deps
 
+	# Ensure local Swift package submodules (e.g. Zsign, IDeviceKitten) exist before package resolution.
+	git submodule update --init --recursive
+
 	curl -fsSL "$(CERT_JSON_URL)" -o cert.json
 
 	jq -r '.cert' cert.json > deps/server.crt
@@ -33,6 +36,7 @@ $(SCHEMES): deps
 	    -arch arm64 \
 	    -sdk $(PLATFORM) \
 	    -derivedDataPath $(TMP) \
+	    -clonedSourcePackagesDirPath "$(TMP)/SourcePackages" \
 	    -skipPackagePluginValidation \
 	    CODE_SIGNING_ALLOWED=NO \
 	    ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
