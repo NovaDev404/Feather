@@ -54,7 +54,7 @@ Any contributions should follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Contributing to Zsign
 
-When contributing to Zsign, head over to [khcrysalis/Zsign-Package](https://github.com/khcrysalis/Zsign-Package/tree/package) and make your contributions.
+When contributing to Zsign, head over to [NovaDev404/Zsign-Package](https://github.com/NovaDev404/Zsign-Package/tree/package) and make your contributions.
 
 Any contributions to here will be immediately updated to here, to keep things consistent.
 
