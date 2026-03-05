@@ -219,7 +219,9 @@ extension SigningHandler {
 	private func _modifyDict(using infoDictionary: NSMutableDictionary, for image: UIImage, to app: URL) async throws {
 		let imageSizes = [
 			(width: 120, height: 120, name: "FRIcon60x60@2x.png"),
-			(width: 152, height: 152, name: "FRIcon76x76@2x~ipad.png")
+			(width: 180, height: 180, name: "FRIcon60x60@3x.png"),
+			(width: 152, height: 152, name: "FRIcon76x76@2x~ipad.png"),
+			(width: 167, height: 167, name: "FRIcon83.5x83.5@2x~ipad.png")
 		]
 		
 		for imageSize in imageSizes {
@@ -233,14 +235,14 @@ extension SigningHandler {
 		let cfBundleIcons: [String: Any] = [
 			"CFBundlePrimaryIcon": [
 				"CFBundleIconFiles": ["FRIcon60x60"],
-				"CFBundleIconName": "FRIcon"
+				"CFBundleIconName": "FRIcon60x60"
 			]
 		]
 		
 		let cfBundleIconsIpad: [String: Any] = [
 			"CFBundlePrimaryIcon": [
-				"CFBundleIconFiles": ["FRIcon60x60", "FRIcon76x76"],
-				"CFBundleIconName": "FRIcon"
+				"CFBundleIconFiles": ["FRIcon60x60", "FRIcon76x76", "FRIcon83.5x83.5"],
+				"CFBundleIconName": "FRIcon60x60"
 			]
 		]
 		
