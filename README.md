@@ -1,7 +1,3 @@
-# ⚠️ WORK IN PROGRESS — DO NOT USE
-
-> This repository is currently being migrated from `Feather` to `NexStore` and is known to be broken during the transition. Do not use or rely on this code until the migration is complete.
-
 # NexStore
 
 [![GitHub Release](https://img.shields.io/github/v/release/NovaDev404/NexStore?include_prereleases)](https://github.com/NovaDev404/NexStore/releases)
@@ -69,3 +65,4 @@ Visit the [HOW IT WORKS](./HOW_IT_WORKS.md) page.
 This project is licensed under the GPL-3.0 license. You can see the full details of the license [here](https://github.com/NovaDev404/NexStore/blob/main/LICENSE). It's under this specific license because I wanted to make a project that is transparent to the user thats related to certificate paired sideloading, before this project there weren't any open source projects that filled in this gap.
 
 By contributing to this project, you agree to license your code under the GPL-3.0 license as well (including agreeing to license exceptions), ensuring that your work, like all other contributions, remains freely accessible and open.
+
