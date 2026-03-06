@@ -27,6 +27,7 @@ while [ "$attempt" -le "$max_attempts" ]; do
   release_info_raw=$(curl -sS \
     -H "Accept: application/vnd.github+json" \
     -H "User-Agent: NexStore-Repo-Updater" \
+    -H "Authorization: token $GITHUB_TOKEN" \
     "$API_URL" 2>/dev/null || true)
 
   if [ -z "$release_info_raw" ]; then
