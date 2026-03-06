@@ -169,7 +169,7 @@ struct AboutView: View {
 	}
 
 	private func _fetchRedditAvatars() async {
-		let usernames = Set(
+		let usernames = Set<String>(
 			_credits.compactMap { credit in
 				guard let reddit = credit.reddit?.trimmingCharacters(in: .whitespacesAndNewlines), !reddit.isEmpty else {
 					return nil
