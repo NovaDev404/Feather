@@ -77,8 +77,8 @@ struct AboutView: View {
 						} label: {
 							_featherDevelopersHeader
 						}
+						.transition(.slide)
 					}
-					.transition(.slide)
 				}
 				
 			}
