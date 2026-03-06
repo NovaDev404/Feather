@@ -6,7 +6,7 @@
 
 This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="NexStore" src="Images/Image-light.png"></picture></p>
+<p align="center"><img src="https://raw.githubusercontent.com/NovaDev404/NexStore/main/NexStore/Resources/Icons/Main/Icon@3x.png"></p>
 
 ### Features
 
@@ -65,4 +65,5 @@ Visit the [HOW IT WORKS](./HOW_IT_WORKS.md) page.
 This project is licensed under the GPL-3.0 license. You can see the full details of the license [here](https://github.com/NovaDev404/NexStore/blob/main/LICENSE). It's under this specific license because I wanted to make a project that is transparent to the user thats related to certificate paired sideloading, before this project there weren't any open source projects that filled in this gap.
 
 By contributing to this project, you agree to license your code under the GPL-3.0 license as well (including agreeing to license exceptions), ensuring that your work, like all other contributions, remains freely accessible and open.
+
 
