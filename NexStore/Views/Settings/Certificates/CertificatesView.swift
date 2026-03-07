@@ -19,7 +19,6 @@ private enum CertificateAddSheet: String, Identifiable {
 struct CertificatesView: View {
 	@AppStorage("nexstore.selectedCert") private var _storedSelectedCert: Int = 0
 	
-	@State private var _isAddOptionsPresenting = false
 	@State private var _addSheet: CertificateAddSheet?
 	@State private var _isSelectedInfoPresenting: CertificatePair?
 
@@ -56,8 +55,8 @@ struct CertificatesView: View {
 					} description: {
 						Text(.localized("Get started signing by importing your first certificate."))
 					} actions: {
-						Button {
-							_presentAddOptions()
+						Menu {
+							_addOptions()
 						} label: {
 							NBButton(.localized("Import"), style: .text)
 						}
@@ -67,23 +66,14 @@ struct CertificatesView: View {
 		}
 		.toolbar {
 			if _bindingSelectedCert == nil {
-				NBToolbarButton(
+				NBToolbarMenu(
 					systemImage: "plus",
 					style: .icon,
 					placement: .topBarTrailing
 				) {
-					_presentAddOptions()
+					_addOptions()
 				}
 			}
-		}
-		.confirmationDialog(.localized("Add Certificate"), isPresented: $_isAddOptionsPresenting, titleVisibility: .visible) {
-			Button(.localized("Official (NovaCerts)")) {
-				_addSheet = .official
-			}
-			Button(.localized("Certificate Files")) {
-				_addSheet = .certificateFiles
-			}
-			Button(.localized("Cancel"), role: .cancel) {}
 		}
 		.sheet(item: $_isSelectedInfoPresenting) { cert in
 			CertificatesInfoView(cert: cert)
@@ -96,8 +86,15 @@ struct CertificatesView: View {
 
 // MARK: - View extension
 extension CertificatesView {
-	private func _presentAddOptions() {
-		_isAddOptionsPresenting = true
+	@ViewBuilder
+	private func _addOptions() -> some View {
+		Button(.localized("Official (NovaCerts)")) {
+			_addSheet = .official
+		}
+
+		Button(.localized("Certificate Files")) {
+			_addSheet = .certificateFiles
+		}
 	}
 
 	@ViewBuilder
