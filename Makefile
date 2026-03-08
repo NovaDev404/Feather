@@ -73,6 +73,7 @@ $(SCHEMES): prepare_packages
 	fi; \
 	OPENSSL_HEADERS="$$OPENSSL_FRAMEWORK/Headers"; \
 	OPENSSL_FRAMEWORK_DIR="$${OPENSSL_FRAMEWORK%/OpenSSL.framework}"; \
+	CPATH="$$OPENSSL_HEADERS" CPLUS_INCLUDE_PATH="$$OPENSSL_HEADERS" OBJC_INCLUDE_PATH="$$OPENSSL_HEADERS" \
 	xcodebuild $(XCODEBUILD_OVERRIDES) \
 	    -workspace $(WORKSPACE) \
 	    -scheme "$@" \
@@ -83,9 +84,11 @@ $(SCHEMES): prepare_packages
 	    -clonedSourcePackagesDirPath "$(SOURCE_PACKAGES)" \
 	    -disableAutomaticPackageResolution \
 	    -skipPackagePluginValidation \
-	    OTHER_CFLAGS="-I$$OPENSSL_HEADERS" \
-	    OTHER_CPLUSPLUSFLAGS="-I$$OPENSSL_HEADERS" \
-	    OTHER_LDFLAGS="-F$$OPENSSL_FRAMEWORK_DIR" \
+	    HEADER_SEARCH_PATHS="$$(inherited) $$OPENSSL_HEADERS" \
+	    SYSTEM_HEADER_SEARCH_PATHS="$$(inherited) $$OPENSSL_HEADERS" \
+	    OTHER_CFLAGS="$$(inherited) -I$$OPENSSL_HEADERS" \
+	    OTHER_CPLUSPLUSFLAGS="$$(inherited) -I$$OPENSSL_HEADERS" \
+	    OTHER_LDFLAGS="$$(inherited) -F$$OPENSSL_FRAMEWORK_DIR" \
 	    CODE_SIGNING_ALLOWED=NO \
 	    ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 
