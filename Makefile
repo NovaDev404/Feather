@@ -53,6 +53,7 @@ prepare_packages: deps
 
 $(SCHEMES): prepare_packages
 	# Zsign expects <openssl/...> headers; reuse AltSign's vendored XCFramework to avoid a second OpenSSL copy.
+	set -e; \
 	ALT_SIGN_OPENSSL_XCFRAMEWORK="$$(find "$(SOURCE_PACKAGES)/checkouts" -path "*/Dependencies/OpenSSL.xcframework" -type d | head -n 1)"; \
 	if [ -z "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" ]; then \
 		echo "Expected AltSign OpenSSL.xcframework after package resolution." >&2; \
@@ -60,12 +61,11 @@ $(SCHEMES): prepare_packages
 	fi; \
 	case "$(PLATFORM)" in \
 		iphonesimulator) \
-			OPENSSL_FRAMEWORK="$$(find "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" -path "*/OpenSSL.framework" -type d | grep -i simulator | head -n 1)" ;; \
+			OPENSSL_FRAMEWORK="$$(find "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" -path "*/OpenSSL.framework" -type d | grep -i simulator | head -n 1 || true)" ;; \
 		*) \
-			# Prefer an iOS device slice; avoid maccatalyst unless nothing else exists. \
-			OPENSSL_FRAMEWORK="$$(find "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" -path "*/ios-*/OpenSSL.framework" -type d | grep -vi simulator | grep -vi maccatalyst | head -n 1)"; \
+			OPENSSL_FRAMEWORK="$$(find "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" -path "*/ios-*/OpenSSL.framework" -type d | grep -vi simulator | grep -vi maccatalyst | head -n 1 || true)"; \
 			if [ -z "$$OPENSSL_FRAMEWORK" ]; then \
-				OPENSSL_FRAMEWORK="$$(find "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" -path "*/OpenSSL.framework" -type d | grep -vi maccatalyst | head -n 1)"; \
+				OPENSSL_FRAMEWORK="$$(find "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" -path "*/OpenSSL.framework" -type d | grep -vi maccatalyst | head -n 1 || true)"; \
 			fi; \
 			if [ -z "$$OPENSSL_FRAMEWORK" ]; then \
 				OPENSSL_FRAMEWORK="$$(find "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" -path "*/OpenSSL.framework" -type d | head -n 1)"; \
