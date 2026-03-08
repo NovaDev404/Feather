@@ -7,6 +7,11 @@ APP := $(TMP)/Build/Products/Release-$(PLATFORM)
 CERT_JSON_URL := https://backloop.dev/pack.json
 WORKSPACE := NexStore.xcworkspace
 SOURCE_PACKAGES := $(TMP)/SourcePackages
+XCODEBUILD_OVERRIDES :=
+
+ifdef BUILD_NUMBER
+XCODEBUILD_OVERRIDES += CURRENT_PROJECT_VERSION=$(BUILD_NUMBER)
+endif
 
 .PHONY: all deps clean prepare_packages $(SCHEMES)
 
@@ -41,7 +46,7 @@ prepare_packages: deps
 	    -skipPackagePluginValidation
 
 $(SCHEMES): prepare_packages
-	xcodebuild \
+	xcodebuild $(XCODEBUILD_OVERRIDES) \
 	    -workspace $(WORKSPACE) \
 	    -scheme "$@" \
 	    -configuration Release \

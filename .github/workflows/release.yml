@@ -19,8 +19,9 @@ jobs:
       - name: Compile NexStore
         run: | 
           export TMPDIR="${RUNNER_TEMP}"
-          agvtool new-version -all $(git rev-parse HEAD)
-          make
+          BUILD_NUMBER=$(git rev-parse HEAD)
+          # agvtool mis-parses GENERATE_INFOPLIST_FILE and treats YES as a plist path.
+          make BUILD_NUMBER="${BUILD_NUMBER}"
           mkdir upload
           mv packages/* upload/
 
