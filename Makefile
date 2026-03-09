@@ -71,8 +71,9 @@ prepare_packages: deps
 		fi; \
 		for header in node.h object.h node_list.h; do \
 			cp -f "$$ALT_SIGN_LIBCNARY_HEADER_BASE/$$header" "$$ALT_SIGN_LIBCNARY_INCLUDE_DIR/$$header"; \
-			ln -sf ../libcnary/include/$$header "$$ALT_SIGN_LIBPLIST_SRC_DIR/$$header"; \
+			cp -f "$$ALT_SIGN_LIBCNARY_HEADER_BASE/$$header" "$$ALT_SIGN_LIBPLIST_SRC_DIR/$$header"; \
 		done; \
+		find "$$ALT_SIGN_LIBPLIST_SRC_DIR" -name '*.c' -exec perl -0pi -e 's/#include\s+<node\.h>/#include "node.h"/g; s/#include\s+<node_list\.h>/#include "node_list.h"/g; s/#include\s+<object\.h>/#include "object.h"/g' {} +; \
 		if [ -d "$$ALT_SIGN_LIBPLIST_INCLUDE_DIR" ]; then \
 			find "$$ALT_SIGN_LIBPLIST_INCLUDE_DIR" -name '*.h' -exec perl -0pi -e 's/\b([A-Za-z_][A-Za-z0-9_]*)&\s+operator=\(((?:const\s+)?)(?:PList::)?\1&\s+([A-Za-z_][A-Za-z0-9_]*)\)/$$1\& operator=(const $$1\& $$3)/g' {} +; \
 		fi; \
