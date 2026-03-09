@@ -50,9 +50,9 @@ prepare_packages: deps
 		echo "Expected AltSign OpenSSL.xcframework after package resolution." >&2; \
 		exit 1; \
 	fi; \
-	ALT_SIGN_UID_CPP="$(SOURCE_PACKAGES)/checkouts/AltSign/Dependencies/ldid/libplist/src/Uid.cpp"; \
-	if [ -f "$$ALT_SIGN_UID_CPP" ]; then \
-		perl -0pi -e 's/Uid& Uid::operator=\(PList::Uid& i\)/Uid& Uid::operator=(const PList::Uid& i)/g' "$$ALT_SIGN_UID_CPP"; \
+	ALT_SIGN_LIBPLIST_SRC_DIR="$(SOURCE_PACKAGES)/checkouts/AltSign/Dependencies/ldid/libplist/src"; \
+	if [ -d "$$ALT_SIGN_LIBPLIST_SRC_DIR" ]; then \
+		find "$$ALT_SIGN_LIBPLIST_SRC_DIR" -name '*.cpp' -exec perl -0pi -e 's/\b([A-Za-z_][A-Za-z0-9_]*)& \1::operator=\((?:PList::)?\1& ([A-Za-z_][A-Za-z0-9_]*)\)/$1\& $1::operator=(const $1\& $2)/g' {} +; \
 	fi
 
 $(SCHEMES): prepare_packages
