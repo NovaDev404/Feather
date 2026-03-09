@@ -52,7 +52,7 @@ prepare_packages: deps
 	fi; \
 	ALT_SIGN_LIBPLIST_SRC_DIR="$(SOURCE_PACKAGES)/checkouts/AltSign/Dependencies/ldid/libplist/src"; \
 	if [ -d "$$ALT_SIGN_LIBPLIST_SRC_DIR" ]; then \
-		find "$$ALT_SIGN_LIBPLIST_SRC_DIR" -name '*.cpp' -exec perl -0pi -e 's/\b([A-Za-z_][A-Za-z0-9_]*)& \1::operator=\((?:PList::)?\1& ([A-Za-z_][A-Za-z0-9_]*)\)/$1\& $1::operator=(const $1\& $2)/g' {} +; \
+		find "$$ALT_SIGN_LIBPLIST_SRC_DIR" -name '*.cpp' -exec perl -0pi -e 's/\b([A-Za-z_][A-Za-z0-9_]*)& \1::operator=\((?:PList::)?\1& ([A-Za-z_][A-Za-z0-9_]*)\)/$$1\& $$1::operator=(const $$1\& $$2)/g' {} +; \
 	fi
 
 $(SCHEMES): prepare_packages
