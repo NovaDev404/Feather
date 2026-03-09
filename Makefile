@@ -64,6 +64,9 @@ prepare_packages: deps
 			echo "Expected AltSign libcnary headers after submodule initialization." >&2; \
 			exit 1; \
 		fi; \
+		for header in node.h object.h node_list.h; do \
+			ln -sf ../libcnary/include/$$header "$$ALT_SIGN_LIBPLIST_SRC_DIR/$$header"; \
+		done; \
 		if [ -d "$$ALT_SIGN_LIBPLIST_INCLUDE_DIR" ]; then \
 			find "$$ALT_SIGN_LIBPLIST_INCLUDE_DIR" -name '*.h' -exec perl -0pi -e 's/\b([A-Za-z_][A-Za-z0-9_]*)&\s+operator=\(((?:const\s+)?)(?:PList::)?\1&\s+([A-Za-z_][A-Za-z0-9_]*)\)/$$1\& operator=(const $$1\& $$3)/g' {} +; \
 		fi; \
