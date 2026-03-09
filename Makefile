@@ -53,6 +53,7 @@ prepare_packages: deps
 	fi; \
 	ALT_SIGN_LIBPLIST_SRC_DIR="$$ALT_SIGN_CHECKOUT/Dependencies/ldid/libplist/src"; \
 	ALT_SIGN_LIBCNARY_INCLUDE_DIR="$$ALT_SIGN_CHECKOUT/Dependencies/ldid/libplist/libcnary/include"; \
+	ALT_SIGN_LIBCNARY_NESTED_INCLUDE_DIR="$$ALT_SIGN_LIBCNARY_INCLUDE_DIR/cnary"; \
 	ALT_SIGN_LIBPLIST_INCLUDE_DIR="$$ALT_SIGN_CHECKOUT/Dependencies/ldid/libplist/include/plist"; \
 	ALT_SIGN_OPENSSL_XCFRAMEWORK="$$(find "$(ALT_SIGN_PATH)" "$(SOURCE_PACKAGES)" \( -path "*/Dependencies/OpenSSL.xcframework" -o -path "*/OpenSSL.xcframework" \) -type d 2>/dev/null | head -n 1)"; \
 	if [ -z "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" ]; then \
@@ -60,11 +61,16 @@ prepare_packages: deps
 		exit 1; \
 	fi; \
 	if [ -d "$$ALT_SIGN_LIBPLIST_SRC_DIR" ]; then \
-		if [ ! -f "$$ALT_SIGN_LIBCNARY_INCLUDE_DIR/node.h" ] || [ ! -f "$$ALT_SIGN_LIBCNARY_INCLUDE_DIR/object.h" ] || [ ! -f "$$ALT_SIGN_LIBCNARY_INCLUDE_DIR/node_list.h" ]; then \
+		ALT_SIGN_LIBCNARY_HEADER_BASE="$$ALT_SIGN_LIBCNARY_INCLUDE_DIR"; \
+		if [ ! -f "$$ALT_SIGN_LIBCNARY_HEADER_BASE/node.h" ] && [ -f "$$ALT_SIGN_LIBCNARY_NESTED_INCLUDE_DIR/node.h" ]; then \
+			ALT_SIGN_LIBCNARY_HEADER_BASE="$$ALT_SIGN_LIBCNARY_NESTED_INCLUDE_DIR"; \
+		fi; \
+		if [ ! -f "$$ALT_SIGN_LIBCNARY_HEADER_BASE/node.h" ] || [ ! -f "$$ALT_SIGN_LIBCNARY_HEADER_BASE/object.h" ] || [ ! -f "$$ALT_SIGN_LIBCNARY_HEADER_BASE/node_list.h" ]; then \
 			echo "Expected AltSign libcnary headers after submodule initialization." >&2; \
 			exit 1; \
 		fi; \
 		for header in node.h object.h node_list.h; do \
+			cp -f "$$ALT_SIGN_LIBCNARY_HEADER_BASE/$$header" "$$ALT_SIGN_LIBCNARY_INCLUDE_DIR/$$header"; \
 			ln -sf ../libcnary/include/$$header "$$ALT_SIGN_LIBPLIST_SRC_DIR/$$header"; \
 		done; \
 		if [ -d "$$ALT_SIGN_LIBPLIST_INCLUDE_DIR" ]; then \
