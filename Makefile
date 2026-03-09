@@ -7,6 +7,7 @@ APP := $(TMP)/Build/Products/Release-$(PLATFORM)
 CERT_JSON_URL := https://backloop.dev/pack.json
 WORKSPACE := NexStore.xcworkspace
 SOURCE_PACKAGES := $(TMP)/SourcePackages
+ALT_SIGN_PATH := AltSign
 XCODEBUILD_OVERRIDES :=
 
 ifdef BUILD_NUMBER
@@ -45,7 +46,7 @@ prepare_packages: deps
 	    -clonedSourcePackagesDirPath "$(SOURCE_PACKAGES)" \
 	    -skipPackagePluginValidation
 
-	ALT_SIGN_CHECKOUT="$(SOURCE_PACKAGES)/checkouts/AltSign"; \
+	ALT_SIGN_CHECKOUT="$(ALT_SIGN_PATH)"; \
 	if [ -f "$$ALT_SIGN_CHECKOUT/.gitmodules" ]; then \
 		git -C "$$ALT_SIGN_CHECKOUT" submodule sync --recursive; \
 		git -C "$$ALT_SIGN_CHECKOUT" submodule update --init --recursive; \
@@ -58,7 +59,7 @@ prepare_packages: deps
 			ln -sf ../libcnary/include/$${header##*/} "$$ALT_SIGN_LIBPLIST_SRC_DIR/$${header##*/}"; \
 		done; \
 	fi; \
-	ALT_SIGN_OPENSSL_XCFRAMEWORK="$$(find "$(SOURCE_PACKAGES)" \( -path "*/Dependencies/OpenSSL.xcframework" -o -path "*/OpenSSL.xcframework" \) -type d | head -n 1)"; \
+	ALT_SIGN_OPENSSL_XCFRAMEWORK="$$(find "$(ALT_SIGN_PATH)" "$(SOURCE_PACKAGES)" \( -path "*/Dependencies/OpenSSL.xcframework" -o -path "*/OpenSSL.xcframework" \) -type d 2>/dev/null | head -n 1)"; \
 	if [ -z "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" ]; then \
 		echo "Expected AltSign OpenSSL.xcframework after package resolution." >&2; \
 		exit 1; \
@@ -77,7 +78,7 @@ prepare_packages: deps
 $(SCHEMES): prepare_packages
 	# Zsign expects <openssl/...> headers; reuse AltSign's vendored XCFramework to avoid a second OpenSSL copy.
 	set -e; \
-	ALT_SIGN_OPENSSL_XCFRAMEWORK="$$(find "$(SOURCE_PACKAGES)" \( -path "*/Dependencies/OpenSSL.xcframework" -o -path "*/OpenSSL.xcframework" \) -type d | head -n 1)"; \
+	ALT_SIGN_OPENSSL_XCFRAMEWORK="$$(find "$(ALT_SIGN_PATH)" "$(SOURCE_PACKAGES)" \( -path "*/Dependencies/OpenSSL.xcframework" -o -path "*/OpenSSL.xcframework" \) -type d 2>/dev/null | head -n 1)"; \
 	if [ -z "$$ALT_SIGN_OPENSSL_XCFRAMEWORK" ]; then \
 		echo "Expected AltSign OpenSSL.xcframework after package resolution." >&2; \
 		exit 1; \

@@ -192,7 +192,7 @@
 				33693A062DC8BF5B00730215 /* XCLocalSwiftPackageReference "AltSourceKit" */,
 				339776052DC9D05C00642FFB /* XCRemoteSwiftPackageReference "LicensePlist" */,
 				3349E7652DEFB46F00E317ED /* XCLocalSwiftPackageReference "IDeviceKitten" */,
-				33F1A0A22E17B001006C1001 /* XCRemoteSwiftPackageReference "AltSign" */,
+				33F1A0A22E17B001006C1001 /* XCLocalSwiftPackageReference "AltSign" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3379C1BA2DA869A1004372DA /* Products */;
@@ -529,6 +529,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = AltSourceKit;
 		};
+		33F1A0A22E17B001006C1001 /* XCLocalSwiftPackageReference "AltSign" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = AltSign;
+		};
 		3371F5152DA91FDC00281AC6 /* XCLocalSwiftPackageReference "Zsign" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Zsign;
@@ -542,14 +546,6 @@
 			requirement = {
 				kind = exactVersion;
 				version = 4.104.0;
-			};
-		};
-		33F1A0A22E17B001006C1001 /* XCRemoteSwiftPackageReference "AltSign" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SideStore/AltSign";
-			requirement = {
-				branch = master;
-				kind = branch;
 			};
 		};
 		3346F8372DC6C68300C7D508 /* XCRemoteSwiftPackageReference "Nuke" */ = {
@@ -594,7 +590,7 @@
 		};
 		33F1A0A02E17B001006C1001 /* AltSign-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 33F1A0A22E17B001006C1001 /* XCRemoteSwiftPackageReference "AltSign" */;
+			package = 33F1A0A22E17B001006C1001 /* XCLocalSwiftPackageReference "AltSign" */;
 			productName = "AltSign-Dynamic";
 		};
 		330F68FB2DBF7C8600D8C35D /* NimbleExtensions */ = {
