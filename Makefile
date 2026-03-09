@@ -73,6 +73,10 @@ prepare_packages: deps
 		if [ -f "$$ALT_SIGN_INTEGER_CPP" ]; then \
 			perl -0pi -e 's/\buint64_t\s+Integer::GetValue\(\)\s+const\b/int64_t Integer::GetValue() const/g' "$$ALT_SIGN_INTEGER_CPP"; \
 		fi; \
+		ALT_SIGN_DATE_CPP="$$ALT_SIGN_LIBPLIST_SRC_DIR/Date.cpp"; \
+		if [ -f "$$ALT_SIGN_DATE_CPP" ]; then \
+			perl -0pi -e 's/\btimeval\s+t\s*=\s*d\.GetValue\(\);/int64_t t = d.GetValue();/g; s/\bDate::Date\(timeval\s+([A-Za-z_][A-Za-z0-9_]*)\)\b/Date::Date(int64_t $$1)/g; s/\bvoid\s+Date::SetValue\(timeval\s+([A-Za-z_][A-Za-z0-9_]*)\)\b/void Date::SetValue(int64_t $$1)/g; s/\btimeval\s+Date::GetValue\(\)\s+const\b/int64_t Date::GetValue() const/g' "$$ALT_SIGN_DATE_CPP"; \
+		fi; \
 		find "$$ALT_SIGN_LIBPLIST_SRC_DIR" -name '*.cpp' -exec perl -0pi -e 's/\b([A-Za-z_][A-Za-z0-9_]*)& \1::operator=\((?:PList::)?\1& ([A-Za-z_][A-Za-z0-9_]*)\)/$$1\& $$1::operator=(const $$1\& $$2)/g' {} +; \
 	else \
 		echo "Expected AltSign libplist sources after submodule initialization." >&2; \
