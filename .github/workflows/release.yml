@@ -17,6 +17,21 @@ jobs:
           git submodule sync --recursive
           git submodule update --init --recursive
 
+      # ✅ Debug Step: show compiler include paths
+      - name: Debug SwiftPM Include Paths
+        run: |
+          cd NexAppleSign
+          echo "=== SwiftPM Resolve ==="
+          swift package resolve
+          echo "=== Swift Build Verbose ==="
+          swift build -v 2>&1 | tee build.log
+          echo "=== Check include flags ==="
+          grep -E "xplist.c|Uid.cpp" build.log -n
+          grep "\-I" build.log | grep libplist -n
+          echo "=== Verify node.h existence ==="
+          ls -la Dependencies/ldid/libplist/libcnary/include/node.h
+          ls -la Dependencies/ldid/libplist/include/plist/Node.h
+
       - name: Clean build artifacts
         run: |
           rm -rf "$RUNNER_TEMP/NexStore"
