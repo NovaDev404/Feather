@@ -20,7 +20,7 @@ jobs:
       # ✅ Debug Step: show compiler include paths
       - name: Debug SwiftPM Include Paths
         run: |
-          cd NexAppleSign
+          cd AltSign
           echo "=== SwiftPM Resolve ==="
           swift package resolve
           echo "=== Swift Build Verbose ==="
@@ -69,3 +69,4 @@ jobs:
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
