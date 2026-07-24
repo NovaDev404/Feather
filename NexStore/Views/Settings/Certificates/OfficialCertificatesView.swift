@@ -12,7 +12,7 @@ import NimbleViews
 struct OfficialCertificatesView: View {
 	@Environment(\.dismiss) private var dismiss
 
-	@State private var _catalogSections: [NovaCerts.CatalogSection] = []
+	@State private var _catalogSections: [NexCerts.CatalogSection] = []
 	@State private var _expandedGroups: Set<String> = []
 	@State private var _errorMessage: String?
 	@State private var _hasLoaded = false
@@ -64,7 +64,7 @@ extension OfficialCertificatesView {
 					}
 				}
 			} footer: {
-				Text(.localized("Certificates are fetched from the NovaCerts README and imported directly into NexStore."))
+				Text(.localized("Certificates are fetched from the NexCerts API and imported directly into NexStore."))
 			}
 		}
 		.listStyle(.insetGrouped)
@@ -77,7 +77,7 @@ extension OfficialCertificatesView {
 	private var _loadingView: some View {
 		VStack(spacing: 12) {
 			ProgressView()
-			Text(.localized("Fetching NovaCerts..."))
+			Text(.localized("Fetching NexCerts..."))
 				.font(.footnote)
 				.foregroundStyle(.secondary)
 		}
@@ -91,7 +91,7 @@ extension OfficialCertificatesView {
 				.font(.largeTitle)
 				.foregroundStyle(.orange)
 
-			Text(.localized("Couldn't Load NovaCerts"))
+			Text(.localized("Couldn't Load NexCerts"))
 				.font(.headline)
 
 			Text(message)
@@ -114,7 +114,7 @@ extension OfficialCertificatesView {
 // MARK: - Rows
 extension OfficialCertificatesView {
 	@ViewBuilder
-	private func _groupRow(_ section: NovaCerts.CatalogSection) -> some View {
+	private func _groupRow(_ section: NexCerts.CatalogSection) -> some View {
 		DisclosureGroup(isExpanded: _groupExpansionBinding(for: section.id)) {
 			ForEach(section.certificates) { certificate in
 				_certificateButton(certificate)
@@ -131,7 +131,7 @@ extension OfficialCertificatesView {
 	}
 
 	@ViewBuilder
-	private func _certificateButton(_ certificate: NovaCerts.CatalogItem) -> some View {
+	private func _certificateButton(_ certificate: NexCerts.CatalogItem) -> some View {
 		Button {
 			Task {
 				await _import(certificate)
@@ -153,7 +153,7 @@ extension OfficialCertificatesView {
 		title: String,
 		subtitle: String?,
 		statusText: String,
-		status: NovaCerts.Status,
+		status: NexCerts.Status,
 		isImporting: Bool
 	) -> some View {
 		HStack(alignment: .center, spacing: 12) {
@@ -193,7 +193,7 @@ extension OfficialCertificatesView {
 			.background(color.opacity(0.12), in: Capsule())
 	}
 
-	private func _statusColor(for status: NovaCerts.Status) -> Color {
+	private func _statusColor(for status: NexCerts.Status) -> Color {
 		switch status {
 		case .signed:
 			return .green
@@ -223,7 +223,7 @@ extension OfficialCertificatesView {
 		}
 
 		do {
-			_catalogSections = try await NovaCerts.fetchCatalog()
+			_catalogSections = try await NexCerts.fetchCatalog()
 			_expandedGroups = []
 		} catch {
 			_catalogSections = []
@@ -232,11 +232,11 @@ extension OfficialCertificatesView {
 	}
 
 	@MainActor
-	private func _import(_ certificate: NovaCerts.CatalogItem) async {
+	private func _import(_ certificate: NexCerts.CatalogItem) async {
 		guard !_isImporting else { return }
 
 		_isImporting = true
-		_importingCertificateID = certificate.id
+		_importingCertificateID = certificate.stringID
 
 		defer {
 			_importingCertificateID = nil
@@ -244,7 +244,7 @@ extension OfficialCertificatesView {
 		}
 
 		do {
-			try await NovaCerts.importCertificate(certificate)
+			try await NexCerts.importCertificate(certificate)
 			dismiss()
 		} catch {
 			UIAlertController.showAlertWithOk(

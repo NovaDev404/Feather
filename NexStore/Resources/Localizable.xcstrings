@@ -14863,61 +14863,61 @@
         }
       }
     },
-    "Certificates are fetched from the NovaCerts README and imported directly into NexStore." : {
+    "Certificates are fetched from the NexCerts API and imported directly into NexStore." : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Certifikáty se načítají z README projektu NovaCerts a importují se přímo do NexStore."
+            "value" : "Certifikáty se načítají z API NexCerts a importují se přímo do NexStore."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zertifikate werden aus der NovaCerts-README geladen und direkt in NexStore importiert."
+            "value" : "Zertifikate werden aus der NexCerts-API geladen und direkt in NexStore importiert."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Certificates are fetched from the NovaCerts README and imported directly into NexStore."
+            "value" : "Certificates are fetched from the NexCerts API and imported directly into NexStore."
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sertifikat diambil dari README NovaCerts dan diimpor langsung ke NexStore."
+            "value" : "Sertifikat diambil dari API NexCerts dan diimpor langsung ke NexStore."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I certificati vengono recuperati dal README di NovaCerts e importati direttamente in NexStore."
+            "value" : "I certificati vengono recuperati dall'API NexCerts e importati direttamente in NexStore."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Certyfikaty są pobierane z README NovaCerts i importowane bezpośrednio do NexStore."
+            "value" : "Certyfikaty są pobierane z API NexCerts i importowane bezpośrednio do NexStore."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sertifikalar NovaCerts README dosyasından alınır ve doğrudan NexStore'a içe aktarılır."
+            "value" : "Sertifikalar NexCerts API'sinden alınır ve doğrudan NexStore'a içe aktarılır."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chứng chỉ được lấy từ README của NovaCerts và nhập trực tiếp vào NexStore."
+            "value" : "Chứng chỉ được lấy từ API NexCerts và nhập trực tiếp vào NexStore."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "证书会从 NovaCerts 的 README 中获取并直接导入到 NexStore。"
+            "value" : "证书会从 NexCerts API 中获取并直接导入到 NexStore。"
           }
         }
       }
@@ -14981,61 +14981,61 @@
         }
       }
     },
-    "Couldn't Load NovaCerts" : {
+    "Couldn't Load NexCerts" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts se nepodařilo načíst"
+            "value" : "NexCerts se nepodařilo načíst"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts konnte nicht geladen werden"
+            "value" : "NexCerts konnte nicht geladen werden"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Couldn't Load NovaCerts"
+            "value" : "Couldn't Load NexCerts"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tidak dapat memuat NovaCerts"
+            "value" : "Tidak dapat memuat NexCerts"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Impossibile caricare NovaCerts"
+            "value" : "Impossibile caricare NexCerts"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nie udało się wczytać NovaCerts"
+            "value" : "Nie udało się wczytać NexCerts"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts yüklenemedi"
+            "value" : "NexCerts yüklenemedi"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Không thể tải NovaCerts"
+            "value" : "Không thể tải NexCerts"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "无法加载 NovaCerts"
+            "value" : "无法加载 NexCerts"
           }
         }
       }
@@ -15217,179 +15217,179 @@
         }
       }
     },
-    "Fetching NovaCerts..." : {
+    "Fetching NexCerts..." : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Načítání NovaCerts..."
+            "value" : "Načítání NexCerts..."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts wird geladen..."
+            "value" : "NexCerts wird geladen..."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fetching NovaCerts..."
+            "value" : "Fetching NexCerts..."
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mengambil NovaCerts..."
+            "value" : "Mengambil NexCerts..."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recupero di NovaCerts..."
+            "value" : "Recupero di NexCerts..."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pobieranie NovaCerts..."
+            "value" : "Pobieranie NexCerts..."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts getiriliyor..."
+            "value" : "NexCerts getiriliyor..."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đang tải NovaCerts..."
+            "value" : "Đang tải NexCerts..."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "正在获取 NovaCerts..."
+            "value" : "正在获取 NexCerts..."
           }
         }
       }
     },
-    "NovaCerts did not return any certificates." : {
+    "NexCerts did not return any certificates." : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts nevrátil žádné certifikáty."
+            "value" : "NexCerts nevrátil žádné certifikáty."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts hat keine Zertifikate zurückgegeben."
+            "value" : "NexCerts hat keine Zertifikate zurückgegeben."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts did not return any certificates."
+            "value" : "NexCerts did not return any certificates."
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts tidak mengembalikan sertifikat apa pun."
+            "value" : "NexCerts tidak mengembalikan sertifikat apa pun."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts non ha restituito alcun certificato."
+            "value" : "NexCerts non ha restituito alcun certificato."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts nie zwrócił żadnych certyfikatów."
+            "value" : "NexCerts nie zwrócił żadnych certyfikatów."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts hiçbir sertifika döndürmedi."
+            "value" : "NexCerts hiçbir sertifika döndürmedi."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts không trả về chứng chỉ nào."
+            "value" : "NexCerts không trả về chứng chỉ nào."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NovaCerts 没有返回任何证书。"
+            "value" : "NexCerts 没有返回任何证书。"
           }
         }
       }
     },
-    "Official (NovaCerts)" : {
+    "Official (NexCerts)" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oficiální (NovaCerts)"
+            "value" : "Oficiální (NexCerts)"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Offiziell (NovaCerts)"
+            "value" : "Offiziell (NexCerts)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Official (NovaCerts)"
+            "value" : "Official (NexCerts)"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Resmi (NovaCerts)"
+            "value" : "Resmi (NexCerts)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ufficiale (NovaCerts)"
+            "value" : "Ufficiale (NexCerts)"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oficjalne (NovaCerts)"
+            "value" : "Oficjalne (NexCerts)"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Resmi (NovaCerts)"
+            "value" : "Resmi (NexCerts)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chính thức (NovaCerts)"
+            "value" : "Chính thức (NexCerts)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "官方（NovaCerts）"
+            "value" : "官方（NexCerts）"
           }
         }
       }

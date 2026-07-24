@@ -88,7 +88,7 @@ struct CertificatesView: View {
 extension CertificatesView {
 	@ViewBuilder
 	private func _addOptions() -> some View {
-		Button(.localized("Official (NovaCerts)")) {
+		Button(.localized("Official (NexCerts)")) {
 			_addSheet = .official
 		}
 
