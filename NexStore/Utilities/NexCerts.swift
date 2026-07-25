@@ -87,7 +87,7 @@ enum NexCerts {
 
 		init(apiValue: String, validTo: String) {
 			let normalizedValue = apiValue.lowercased()
-			if _isExpired(validTo: validTo) {
+			if Self._isExpired(validTo: validTo) {
 				self = .expired
 			} else if normalizedValue.contains("revoked") || normalizedValue.contains("❌") {
 				self = .revoked
