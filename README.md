@@ -1,12 +1,13 @@
-# NexStore
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NovaDev404/NexStore/main/NexStore/Resources/Icons/Main/Icon@3x.png" width="150" height="150" alt="NexStore Logo">
+</p>
+<h1 align="center">NexStore</h1>
 
 [![GitHub Release](https://img.shields.io/github/v/release/NovaDev404/NexStore?include_prereleases)](https://github.com/NovaDev404/NexStore/releases)
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/NovaDev404/NexStore/total)](https://github.com/NovaDev404/NexStore/releases)
 [![GitHub License](https://img.shields.io/github/license/NovaDev404/NexStore?color=%23C96FAD)](https://github.com/NovaDev404/NexStore/blob/main/LICENSE)
 
 This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
-
-<p align="center"><img src="https://raw.githubusercontent.com/NovaDev404/NexStore/main/NexStore/Resources/Icons/Main/Icon@3x.png"></p>
 
 ### Features
 
@@ -27,7 +28,7 @@ This app allows you to install and manage applications contained in a single app
 |  | NexStore | Feather |
 |:-----------|:--------:|:---------:|
 | **Dynamic DNS**   | ✅       | ❌        |
-| **Device thinks & Apple Status for Certs**   | ✅       | ❌        |
+| **Accurate OCSP certificate status**   | ✅       | ❌        |
 - Many more features coming soon including Apple ID signing, JIT enabler, and more!
 
 ## Download
@@ -44,16 +45,6 @@ Visit [releases](https://github.com/NovaDev404/NexStore/releases) and get the la
 ## How does it work?
 
 Visit the [HOW IT WORKS](./HOW_IT_WORKS.md) page.
-
-## Star History
-
-<a href="https://star-history.com/#NovaDev404/NexStore&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=NovaDev404/NexStore&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=NovaDev404/NexStore&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=NovaDev404/NexStore&type=Date" />
- </picture>
-</a>
 
 ## Acknowledgements
 
