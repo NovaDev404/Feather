@@ -142,7 +142,7 @@ extension OfficialCertificatesView {
 				subtitle: certificate.subtitle,
 				statusText: certificate.status.title,
 				status: certificate.status,
-				isImporting: _importingCertificateID == certificate.id
+				isImporting: _importingCertificateID == certificate.stringID
 			)
 		}
 		.buttonStyle(.plain)
@@ -182,7 +182,7 @@ extension OfficialCertificatesView {
 		.contentShape(Rectangle())
 	}
 
-	private func _statusBadge(text: String, status: NovaCerts.Status) -> some View {
+	private func _statusBadge(text: String, status: NexCerts.Status) -> some View {
 		let color = _statusColor(for: status)
 
 		return Text(text)
