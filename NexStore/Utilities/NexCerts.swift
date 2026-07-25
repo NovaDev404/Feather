@@ -71,6 +71,7 @@ enum NexCerts {
 	enum Status: String, Hashable {
 		case signed
 		case revoked
+		case expired
 		case unknown
 
 		init(apiValue: String) {
@@ -84,27 +85,55 @@ enum NexCerts {
 			}
 		}
 
+		init(apiValue: String, validTo: String) {
+			let normalizedValue = apiValue.lowercased()
+			if normalizedValue.contains("revoked") || normalizedValue.contains("❌") {
+				self = .revoked
+			} else if _isExpired(validTo: validTo) {
+				self = .expired
+			} else if normalizedValue.contains("signed") || normalizedValue.contains("✅") {
+				self = .signed
+			} else {
+				self = .unknown
+			}
+		}
+
+		private static func _isExpired(validTo: String) -> Bool {
+			let dateFormatter = DateFormatter()
+			dateFormatter.dateFormat = "yyyy-MM-dd"
+			guard let expiryDate = dateFormatter.date(from: validTo) else {
+				return false
+			}
+			return expiryDate < Date()
+		}
+
 		var title: String {
 			switch self {
 			case .signed:
 				String.localized("Signed")
 			case .revoked:
 				String.localized("Revoked")
+			case .expired:
+				String.localized("Expired")
 			case .unknown:
 				String.localized("Unknown")
 			}
 		}
 
 		static func aggregate(_ statuses: [Status]) -> Status {
+			if statuses.contains(.revoked) {
+				return .revoked
+			}
+
+			if statuses.contains(.expired) {
+				return .expired
+			}
+
 			if statuses.contains(.signed) {
 				return .signed
 			}
 
-			if statuses.contains(.unknown) {
-				return .unknown
-			}
-
-			return .revoked
+			return .unknown
 		}
 	}
 
@@ -165,7 +194,7 @@ extension NexCerts {
 				id: cert.id,
 				name: cert.name,
 				certificateType: "Development",
-				status: Status(apiValue: cert.status),
+				status: Status(apiValue: cert.status, validTo: cert.valid_to),
 				rawStatusText: cert.status,
 				validFrom: cert.valid_from,
 				validTo: cert.valid_to,

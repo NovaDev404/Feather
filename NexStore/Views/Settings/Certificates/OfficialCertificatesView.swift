@@ -199,6 +199,8 @@ extension OfficialCertificatesView {
 			return .green
 		case .revoked:
 			return .red
+		case .expired:
+			return .yellow
 		case .unknown:
 			return .secondary
 		}
