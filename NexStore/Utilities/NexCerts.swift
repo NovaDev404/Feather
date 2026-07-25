@@ -87,10 +87,10 @@ enum NexCerts {
 
 		init(apiValue: String, validTo: String) {
 			let normalizedValue = apiValue.lowercased()
-			if normalizedValue.contains("revoked") || normalizedValue.contains("❌") {
-				self = .revoked
-			} else if _isExpired(validTo: validTo) {
+			if _isExpired(validTo: validTo) {
 				self = .expired
+			} else if normalizedValue.contains("revoked") || normalizedValue.contains("❌") {
+				self = .revoked
 			} else if normalizedValue.contains("signed") || normalizedValue.contains("✅") {
 				self = .signed
 			} else {
@@ -121,16 +121,16 @@ enum NexCerts {
 		}
 
 		static func aggregate(_ statuses: [Status]) -> Status {
-			if statuses.contains(.expired) {
-				return .expired
-			}
-
 			if statuses.contains(.signed) {
 				return .signed
 			}
 
 			if statuses.contains(.revoked) {
 				return .revoked
+			}
+
+			if statuses.contains(.expired) {
+				return .expired
 			}
 
 			return .unknown
