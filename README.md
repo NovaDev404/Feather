@@ -13,7 +13,7 @@ This app allows you to install and manage applications contained in a single app
 - User friendly, and clean UI.
 - Sign and install applications.
 - Supports [AltStore](https://faq.altstore.io/distribute-your-apps/make-a-source#apps) repositories.
-- Supports [NovaDNS Dynamic](https://novadev.vip/resources/dns/)!
+- Supports [NovaDNS Dynamic](https://sideloading.net/dns/)!
 - View detailed information about apps and your certificates.
 - Configurable signing options mainly for modifying the app, such as appearance and allowing support for the files app.
   - This includes patching apps for compatibility and Liquid Glass.

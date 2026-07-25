@@ -20,7 +20,7 @@ struct MoreView: View {
 					}
 					Spacer()
 					Button(action: {
-						guard let url = URL(string: "https://novadev.vip/resources/dns/") else { return }
+						guard let url = URL(string: "https://sideloading.net/dns/") else { return }
 						Task { @MainActor in
 							await UIApplication.shared.open(url)
 						}
