@@ -121,16 +121,16 @@ enum NexCerts {
 		}
 
 		static func aggregate(_ statuses: [Status]) -> Status {
-			if statuses.contains(.revoked) {
-				return .revoked
-			}
-
 			if statuses.contains(.expired) {
 				return .expired
 			}
 
 			if statuses.contains(.signed) {
 				return .signed
+			}
+
+			if statuses.contains(.revoked) {
+				return .revoked
 			}
 
 			return .unknown
